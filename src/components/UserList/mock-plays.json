@@ -1,0 +1,44 @@
+{
+    "plays": [
+        {
+            "playId": 344,
+            "entries": [
+                {
+                    "userId": "inigob",
+                    "score": {
+                        "state": "win",
+                        "tries": 2
+                    }
+                },
+                {
+                    "userId": "javib",
+                    "score": {
+                        "state": "lost",
+                        "tries": 0
+                    }
+                },
+                {
+                    "userId": "elenal",
+                    "score": {
+                        "state": "win",
+                        "tries": 3
+                    }
+                },
+                {
+                    "userId": "vicenteb",
+                    "score": {
+                        "state": "win",
+                        "tries": 1
+                    }
+                },
+                {
+                    "userId": "bertal",
+                    "score": {
+                        "state": "pending",
+                        "tries": 0
+                    }
+                }
+            ]
+        }
+    ]
+}
