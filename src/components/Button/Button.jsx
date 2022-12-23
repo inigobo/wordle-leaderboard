@@ -1,10 +1,12 @@
 import { styled } from "@stitches/react";
+import { useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import { ButtonStyles } from "./Button.styles";
 
 const HeaderButton = (props) => {
+    let navigate = useNavigate();
     return (
-        <ButtonLayout variant='warning'>
+        <ButtonLayout variant='warning' onClick={()=>navigate(props.redirect)} >
             {props.text}
         </ButtonLayout>
     )
