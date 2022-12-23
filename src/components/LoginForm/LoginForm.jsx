@@ -12,14 +12,11 @@ const LoginForm = () => {
     const { globalContext, setGlobalContext } = useGlobalContext();
 
     const handleSubmit = (event) => {
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-
+        event.preventDefault();
+        event.stopPropagation();
+        console.log(event.target.username.value,'>>>username')
         setValidated(true);
-        setGlobalContext({ ...globalContext,username:'username', isLoggedIn: true })
+        setGlobalContext({ ...globalContext,username:event.target.username.value, isLoggedIn: true })
     };
     console.log(globalContext);
     return (
@@ -32,8 +29,10 @@ const LoginForm = () => {
                         className="mb-3">
                         <Form.Control
                             type="text"
+                            name="username"
                             placeholder='Username'
-                            required />
+                            required 
+                        />
                         <Form.Control.Feedback></Form.Control.Feedback>
                         <Form.Control.Feedback type="invalid">
                             Please choose a username.
@@ -42,6 +41,7 @@ const LoginForm = () => {
                     <FloatingLabel
                         controlId="floatingInput"
                         label="Email"
+                        name="email"
                         className="mb-3">
                         <Form.Control
                             type="email"

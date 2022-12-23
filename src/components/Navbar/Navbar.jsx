@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../../contexts/GlobalContext';
 
 const HeaderNav = () => {
@@ -21,7 +22,11 @@ const HeaderNav = () => {
                         <Nav.Link href="#home">Home</Nav.Link>
                         <Nav.Link href="link">Link</Nav.Link>
                         <NavDropdown title="Leaderboard" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="/leaderboard">Daily</NavDropdown.Item>
+                            <NavDropdown.Item >
+                                <Link to="/leaderboard">
+                                Daily
+                                </Link>
+                            </NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Weekly</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.3">All-time</NavDropdown.Item>
                         </NavDropdown>
