@@ -1,17 +1,15 @@
 import { styled } from "@stitches/react";
 import { HeaderStyles } from "./Header.styles";
 import HeaderButton from "../Button/Button";
-import { useNavigate } from "react-router-dom";
+import LoginCard from "../LoginCard/LoginCard";
 
 
 const Header = () => {
-    let navigate = useNavigate();
-    //const [userContext, setUserContext]
-
     return (
         <HeaderContainer>
-            <HeaderButton onClick={()=>setTimeout(()=>{navigate("/")},500)} text={"Home"} />
-            <HeaderButton onClick={()=>setTimeout(()=>{navigate("/leaderboard")},500)}  text={"Leaderboard"} />
+            <HeaderButton redirect={"/"} text={"Home"} />
+            <HeaderButton redirect={"/leaderboard"}  text={"Leaderboard"} />
+            <HeaderButton redirect={"/login"}  text={"Login"} />
             <LoginCard/>
         </HeaderContainer>
     )
