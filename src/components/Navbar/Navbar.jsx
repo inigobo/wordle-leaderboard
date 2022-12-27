@@ -33,7 +33,7 @@ const HeaderNav = () => {
                         </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
-                <Navbar.Toggle />
+
                 <Navbar.Collapse className="justify-content-end">
                     {globalContext.isLoggedIn && <LoginCard />}
                     {!globalContext.isLoggedIn && <LinkContainer to="/login"><Nav.Link >Login</Nav.Link></LinkContainer>}
