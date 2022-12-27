@@ -5,6 +5,10 @@ const initialGlobalContext = {
   isLoggedIn: false,
 }
 
+const username = localStorage.getItem('username')
+if (username) {
+  console.log("loggde")
+}
 const GlobalContext = createContext({
   globalContext: initialGlobalContext,
   setGlobalContext: () => initialGlobalContext,

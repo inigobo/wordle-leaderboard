@@ -5,13 +5,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../../contexts/GlobalContext';
+import LoginCard from '../LoginCard/LoginCard';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const HeaderNav = () => {
     const { globalContext } = useGlobalContext();
     useEffect(() => {
-        console.log(globalContext,"nav");
+        console.log(globalContext, "nav");
     }, [globalContext])
-    
+
     return (
         <Navbar bg="light" expand="lg">
             <Container>
@@ -19,24 +21,22 @@ const HeaderNav = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="link">Link</Nav.Link>
                         <NavDropdown title="Leaderboard" id="basic-nav-dropdown">
                             <NavDropdown.Item >
-                                <Link to="/leaderboard">
-                                Daily
-                                </Link>
+                                <LinkContainer to="/leaderboard">
+                                    <Nav.Link>Today</Nav.Link>
+                                </LinkContainer>
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Weekly</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">All-time</NavDropdown.Item>
                         </NavDropdown>
+                        <LinkContainer to="/login">
+                            <Nav.Link>Login</Nav.Link>
+                        </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
-                    <Navbar.Text>
-                        Signed in as: <a href="/profile">{globalContext.username}</a>
-                    </Navbar.Text>
+                    {globalContext.isLoggedIn && <LoginCard />}
+                    {!globalContext.isLoggedIn && <LinkContainer to="/login"><Nav.Link >Login</Nav.Link></LinkContainer>}
                 </Navbar.Collapse>
             </Container>
         </Navbar>
@@ -44,3 +44,4 @@ const HeaderNav = () => {
 }
 
 export default HeaderNav;
+

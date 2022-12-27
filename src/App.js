@@ -10,6 +10,7 @@ import { GlobalContextProvider } from './contexts/GlobalContext';
 import Login from './pages/Login/Login';
 
 function App() {
+
   return (
     <div className="App">
       <BrowserRouter>
