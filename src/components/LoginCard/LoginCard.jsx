@@ -1,6 +1,9 @@
 import { styled } from '@stitches/react';
 import { useEffect } from 'react';
 import { useGlobalContext } from '../../contexts/GlobalContext';
+import { Card } from "react-bootstrap";
+import { LoginCardStyles } from './LoginCard.styles';
+
 
 const LoginCard = () => {
     const { globalContext } = useGlobalContext();
@@ -17,4 +20,4 @@ const LoginCard = () => {
 
 export default LoginCard;
 
-const CardLayout = styled(Card, CardLayoutStyles)
+const CardLayout = styled(Card, LoginCardStyles)
