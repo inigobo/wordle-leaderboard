@@ -1,14 +1,11 @@
 import { useState, createContext, useContext } from 'react'
 
 const initialGlobalContext = {
-  username: null,
+  currentUser: null,
   isLoggedIn: false,
+  selectedUser: null,
 }
 
-const username = localStorage.getItem('username')
-if (username) {
-  console.log("loggde")
-}
 const GlobalContext = createContext({
   globalContext: initialGlobalContext,
   setGlobalContext: () => initialGlobalContext,

@@ -1,37 +1,54 @@
 export const UserCardStyle = {
     display: 'flex',
     flexFlow: 'row nowrap',
-    justifyContent: 'center',
-    alignContent: 'center',
+    justifyContent: 'space-between',
+    alignContent: 'stretch',
     alignItems: 'center',
+    margin:'0 1em',
     border: '1px solid black',
-    padding:'0.5em',
-    borderRadius: '0.75rem',
+    padding: '0.5em',
+    borderRadius: '1.25rem',
     boxShadow: 'none !important',
     '&:hover': {
-        backgroundColor: 'beige',
+        backgroundColor: 'lightgray',
     },
     cursor: 'pointer',
 }
 export const AvatarStyle = {
-    width:'5em',
-    height: '5em',
+    width: '4em',
+    height: '4em',
     border: 'black solid',
-    borderRadius: '0.75rem'
+    borderRadius: '1.25rem',
+    '@media (max-width: 820px)': {
+        width: '3em',
+        height: '3em',
+    },
 }
 
 export const TitleContainerStyle = {
-    width:'4em',
-    height: '4em',
-    flexGrow: '5',
+    display: 'flex',
+    flexDirection: 'row',
     border: 'black solid',
-    borderRadius: '0.75rem'
+    borderRadius: '0.75rem',
+    fontSize: '2em',
+    flexFlow: 'row',
+    justifyContent: 'left',
+    justifyItems: 'center',
+    '@media (max-width: 820px)': {
+        fontSize: '1.5em',
+    },
 }
 
 export const StatsContainerStyle = {
-    width:'4em',
-    height: '4em',
-    flexGrow: '1',
+    display: 'flex',
+    flexDirection: 'row',
     border: 'black solid',
-    borderRadius: '0.75rem'
+    borderRadius: '0.75rem',
+    fontSize: '2.5em',
+    justifyContent: 'center',
+    justifyItems: 'center',
+    '@media (max-width: 820px)': {
+        fontSize: '1.5em',
+    },
+
 }
