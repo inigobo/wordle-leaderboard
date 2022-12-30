@@ -1,8 +1,12 @@
 import { styled } from '@stitches/react';
 import { useEffect } from 'react';
 import { useGlobalContext } from '../../contexts/GlobalContext';
-import { Card } from "react-bootstrap";
-import { LoginCardStyles } from './LoginCard.styles';
+import { LoginCardStyles, UsernameContainerStyles } from './LoginCard.styles';
+import Avatar from '../Avatar/Avatar';
+import file from '../../assets/images/p1.jpeg';
+import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
+import LoginCardMenu from '../LoginCardMenu/LoginCardMenu';
+import { Dropdown } from 'react-bootstrap';
 
 
 const LoginCard = () => {
@@ -12,12 +16,17 @@ const LoginCard = () => {
     }, [globalContext]);
 
     return (
-        <div>
-            Signed in as: {globalContext.username}
-        </div>
+        <Dropdown>
+            <CardLayout variant='bg'>
+                <Avatar source={file}></Avatar>
+                <UsernameContainer>{globalContext.username}</UsernameContainer>
+            </CardLayout>
+            <LoginCardMenu/>
+        </Dropdown>
     );
 }
 
 export default LoginCard;
 
-const CardLayout = styled(Card, LoginCardStyles)
+const CardLayout = styled(DropdownToggle, LoginCardStyles);
+const UsernameContainer = styled('div', UsernameContainerStyles);

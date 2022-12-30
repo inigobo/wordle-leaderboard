@@ -1,12 +1,14 @@
+import { Card } from "react-bootstrap";
 import Avatar from '../Avatar/Avatar';
-import { UserCardStyle, TitleContainerStyle, StatsContainerStyle } from "./UserCard.styles";
+import Image from 'react-bootstrap/Image';
+import { ProfileInfoStyle, InfoContainerStyle } from "./ProfileInfo.styles";
 import { styled } from '@stitches/react';
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from '../../contexts/GlobalContext';
 
 import file from '../../assets/images/p1.jpeg';
 
-const UserCard = (props) => {
+const ProfileInfo = (props) => {
     let navigate = useNavigate();
     const { globalContext, setGlobalContext } = useGlobalContext();
 
@@ -20,15 +22,15 @@ const UserCard = (props) => {
     };
 
     return (
-        <CardLayout onClick={handleSelectCard}>
-            <Avatar source={file} variant='small' />
-            <TitleContainer>{props.username}</TitleContainer>
-            <StatsContainer>{props.score}</StatsContainer>
-        </CardLayout>
+        <ProfileInfoLayout onClick={handleSelectCard}>
+            <Avatar source={file} variant='big'/>
+            <InfoContainer>Username: {props.username}</InfoContainer>
+            <InfoContainer>Attempts: {props.score}</InfoContainer>
+            <InfoContainer>Streak: </InfoContainer>
+        </ProfileInfoLayout>
     )
 }
 
-export default UserCard;
-const CardLayout = styled('div', UserCardStyle)
-const TitleContainer = styled('div', TitleContainerStyle)
-const StatsContainer = styled('div', StatsContainerStyle)
+export default ProfileInfo;
+const ProfileInfoLayout = styled('div', ProfileInfoStyle)
+const InfoContainer = styled('div', InfoContainerStyle)

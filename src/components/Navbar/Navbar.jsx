@@ -28,8 +28,8 @@ const HeaderNav = () => {
                                 </LinkContainer>
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <LinkContainer to="/login">
-                            <Nav.Link>Login</Nav.Link>
+                        <LinkContainer to="/add">
+                            <Nav.Link>Add</Nav.Link>
                         </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
