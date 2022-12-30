@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { LoginFormStyles } from './LoginForm.styles';
 import { styled } from '@stitches/react';
 import { useGlobalContext } from '../../contexts/GlobalContext';
+import RegisterCard from '../RegisterCard/RegisterCard';
 
 const LoginForm = () => {
     const [validated, setValidated] = useState(false);
@@ -61,6 +62,7 @@ const LoginForm = () => {
                     Submit
                 </Button>
             </Form>
+            <RegisterCard/>
         </LoginFormLayout>
     )
 }

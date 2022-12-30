@@ -22,6 +22,7 @@ const LoginCard = () => {
                 <UsernameContainer>{globalContext.username}</UsernameContainer>
             </CardLayout>
             <LoginCardMenu/>
+            
         </Dropdown>
     );
 }
