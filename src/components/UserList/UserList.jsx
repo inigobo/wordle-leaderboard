@@ -1,7 +1,7 @@
 import UserCard from "../UserCard/UserCard";
 import { useState } from "react";
-import MockPlays from './mock-plays.json'
-import MockUsers from './mock-users.json'
+import MockPlays from '../../assets/data/mock-plays.json'
+import MockUsers from '../../assets/data/mock-users.json'
 import { styled } from "@stitches/react";
 import { UserListLayoutStyles, AvatarStyle, TitleContainerStyle, StatsContainerStyle } from "./UserList.styles";
 
