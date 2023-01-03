@@ -11,3 +11,8 @@ export const generateAvatar = async (seed) => {
         .catch((e) => console.error(e));
 
 };
+
+export const getSGV = (seed) => {
+    return `${API_ROOT}/:${seed}.svg`;
+
+};

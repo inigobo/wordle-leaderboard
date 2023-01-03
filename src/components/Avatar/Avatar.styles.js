@@ -8,6 +8,11 @@ export const AvatarStyles = {
                 heigth: '50px',
                 borderRadius: '4px',
             },
+            medium: {
+                width: '90px',
+                heigth: '90px',
+                borderRadius: '4px',
+            },
             big: {
                 width: '140px',
                 heigth: '140px',

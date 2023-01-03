@@ -1,67 +1,68 @@
-
+import { Card, FormGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import { Card } from 'react-bootstrap';
-import { styled } from '@stitches/react';
-import Row from 'react-bootstrap/Row';
+import { useState } from 'react';
 import { RegisterFormStyles } from './RegisterForm.styles';
-
+import { styled } from '@stitches/react';
+import { useGlobalContext } from '../../contexts/GlobalContext';
 const RegisterForm = () => {
+    const [validated, setValidated] = useState(false);
+    const { globalContext, setGlobalContext } = useGlobalContext();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        console.log(event.target.username.value,'>>>username')
+        setValidated(true);
+        setGlobalContext({ ...globalContext,username:event.target.username.value, isLoggedIn: true })
+    };
+    console.log(globalContext);
     return (
-        <RegisterFormLayout>
-
-            <Form>
-                <Row className="align-items-center">
-                    <Col xs="auto">
-                        <Form.Label htmlFor="inlineFormInput" visuallyHidden>
-                            Name
-                        </Form.Label>
+        <RegisterFormLayout style={RegisterFormStyles}>
+            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                <FormGroup>
+                    <FloatingLabel
+                        controlId="floatingInput"
+                        label="Username"
+                        className="mb-3">
                         <Form.Control
-                            className="mb-2"
-                            id="inlineFormInput"
-                            placeholder="Name"
+                            type="text"
+                            name="username"
+                            placeholder='Username'
+                            required 
                         />
-                        <Form.Label htmlFor="inlineFormInput" visuallyHidden>
-                            Surname
-                        </Form.Label>
+                        <Form.Control.Feedback></Form.Control.Feedback>
+                        <Form.Control.Feedback type="invalid">
+                            Please choose a username.
+                        </Form.Control.Feedback>
+                    </FloatingLabel>
+                    <FloatingLabel
+                        controlId="floatingInput"
+                        label="Email"
+                        name="email"
+                        className="mb-3">
                         <Form.Control
-                            className="mb-2"
-                            id="inlineFormInput"
-                            placeholder="Surname"
-                        />
-                    </Col>
-                    <Col xs="auto">
-                        <Form.Label htmlFor="inlineFormInputGroup" visuallyHidden>
-                            Username
-                        </Form.Label>
-                        <InputGroup className="mb-2">
-                            <InputGroup.Text>@</InputGroup.Text>
-                            <Form.Control id="inlineFormInputGroup" placeholder="Username" />
-                        </InputGroup>
-
-
-                    </Col>
-                    <Col xs="auto">
-                        <Form.Check
-                            type="checkbox"
-                            id="autoSizingCheck"
-                            className="mb-2"
-                            label="Remember me"
-                        />
-                    </Col>
-                    <Col xs="auto">
-                        <Button type="submit" className="mb-2">
-                            Submit
-                        </Button>
-                    </Col>
-                </Row>
+                            type="email"
+                            placeholder="name@example.com" />
+                    </FloatingLabel>
+                    <FloatingLabel
+                        controlId="floatingInput"
+                        label="Password"
+                        className="mb-3">
+                        <Form.Control
+                            type="password"
+                            placeholder='Password'
+                            required />
+                    </FloatingLabel>
+                </FormGroup>
+                <Button variant="primary" type="submit">
+                    Register
+                </Button>
             </Form>
         </RegisterFormLayout>
-    );
+    )
 }
 
 export default RegisterForm;
-
-const RegisterFormLayout = styled(Card, RegisterFormStyles)
+const RegisterFormLayout = styled(Card, RegisterFormStyles);
