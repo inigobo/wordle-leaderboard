@@ -28,8 +28,6 @@ export const AvatarStyle = {
 export const TitleContainerStyle = {
     display: 'flex',
     flexDirection: 'row',
-    border: 'black solid',
-    borderRadius: '0.75rem',
     fontSize: '2em',
     flexFlow: 'row',
     justifyContent: 'left',
@@ -42,9 +40,8 @@ export const TitleContainerStyle = {
 export const StatsContainerStyle = {
     display: 'flex',
     flexDirection: 'row',
-    border: 'black solid',
-    borderRadius: '0.75rem',
     fontSize: '2.5em',
+    margin:'0 2em 0 0',
     justifyContent: 'center',
     justifyItems: 'center',
     '@media (max-width: 820px)': {

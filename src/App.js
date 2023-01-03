@@ -8,6 +8,7 @@ import ProfileDetail from './pages/ProfileDetail/ProfileDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { GlobalContextProvider } from './contexts/GlobalContext';
 import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/profile" element={<ProfileDetail />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </GlobalContextProvider>
       </BrowserRouter>

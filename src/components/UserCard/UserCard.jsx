@@ -21,7 +21,7 @@ const UserCard = (props) => {
 
     return (
         <CardLayout onClick={handleSelectCard}>
-            <Avatar source={file} variant='small' />
+            <Avatar seed={props.username} variant='medium' />
             <TitleContainer>{props.username}</TitleContainer>
             <StatsContainer>{props.score}</StatsContainer>
         </CardLayout>

@@ -3,12 +3,10 @@ import Button from 'react-bootstrap/Button';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
-import { LoginFormStyles } from './LoginForm.styles';
+import { RegisterFormStyles } from './RegisterForm.styles';
 import { styled } from '@stitches/react';
 import { useGlobalContext } from '../../contexts/GlobalContext';
-import RegisterCard from '../RegisterCard/RegisterCard';
-
-const LoginForm = () => {
+const RegisterForm = () => {
     const [validated, setValidated] = useState(false);
     const { globalContext, setGlobalContext } = useGlobalContext();
 
@@ -21,7 +19,7 @@ const LoginForm = () => {
     };
     console.log(globalContext);
     return (
-        <LoginFormLayout style={LoginFormStyles}>
+        <RegisterFormLayout style={RegisterFormStyles}>
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <FormGroup>
                     <FloatingLabel
@@ -59,13 +57,12 @@ const LoginForm = () => {
                     </FloatingLabel>
                 </FormGroup>
                 <Button variant="primary" type="submit">
-                    Submit
+                    Register
                 </Button>
             </Form>
-            <RegisterCard/>
-        </LoginFormLayout>
+        </RegisterFormLayout>
     )
 }
 
-export default LoginForm;
-const LoginFormLayout = styled(Card, LoginFormStyles);
+export default RegisterForm;
+const RegisterFormLayout = styled(Card, RegisterFormStyles);
