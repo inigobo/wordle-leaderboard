@@ -1,4 +1,4 @@
 export const RegisterFormStyles = {
-    width: '29rem',
+    width: '44rem',
     padding: '1em'
 }

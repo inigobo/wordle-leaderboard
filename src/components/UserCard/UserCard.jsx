@@ -4,8 +4,6 @@ import { styled } from '@stitches/react';
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from '../../contexts/GlobalContext';
 
-import file from '../../assets/images/p1.jpeg';
-
 const UserCard = (props) => {
     let navigate = useNavigate();
     const { globalContext, setGlobalContext } = useGlobalContext();
@@ -21,7 +19,7 @@ const UserCard = (props) => {
 
     return (
         <CardLayout onClick={handleSelectCard}>
-            <Avatar seed={props.username} variant='medium' />
+            <Avatar seed={props.username}  />
             <TitleContainer>{props.username}</TitleContainer>
             <StatsContainer>{props.score}</StatsContainer>
         </CardLayout>

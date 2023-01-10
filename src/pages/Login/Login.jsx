@@ -5,10 +5,11 @@ import { LoginStyles } from "./Login.styles";
 const Login = () => {
     return (
         <LoginLayout>
-            <LoginForm/>
+            <h1>Login</h1>
+            <LoginForm />
         </LoginLayout>
     )
 }
 
 export default Login;
-const LoginLayout = styled('div',LoginStyles)
+const LoginLayout = styled('div', LoginStyles)
