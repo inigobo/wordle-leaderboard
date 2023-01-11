@@ -4,15 +4,12 @@ import { styled } from '@stitches/react';
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from '../../contexts/GlobalContext';
 import InfoContainer from "./InfoContainer/InfoContainer";
-import { useWindowDimensions } from '../../hooks/useWindowDimensions';
 
 
 const ProfileInfo = (props) => {
     let navigate = useNavigate();
     const { globalContext, setGlobalContext } = useGlobalContext();
-    const {isDesktop} = useWindowDimensions();
-    console.log(isDesktop);
-
+    
     const handleSelectCard = (event) => {
         event.preventDefault();
         event.stopPropagation();

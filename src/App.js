@@ -6,11 +6,16 @@ import HeaderNav from './components/Navbar/Navbar';
 import Leaderboard from './pages/Leaderboard/Leaderboard';
 import ProfileDetail from './pages/ProfileDetail/ProfileDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { GlobalContextProvider } from './contexts/GlobalContext';
+import { GlobalContextProvider, useGlobalContext } from './contexts/GlobalContext';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 
 function App() {
+  const {globalContext, setGlobalContext} = useGlobalContext();
+  const username = localStorage.getItem('username');
+  if (username !== null) {
+    setGlobalContext({ ...globalContext, currentUser: username, isLoggedIn: true });
+  }
 
   return (
     <div className="App">
