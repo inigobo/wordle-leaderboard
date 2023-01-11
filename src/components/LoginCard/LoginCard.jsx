@@ -22,8 +22,8 @@ const LoginCard = () => {
 
     return (
         <CardLayout variant='bg' onClick={handleClickCard}>
-            <Avatar seed={globalContext.username} variant='small'></Avatar>
-            <UsernameContainer>{globalContext.username}</UsernameContainer>
+            <Avatar seed={globalContext.avatarSeed} variant='small'></Avatar>
+            <UsernameContainer>{globalContext.currentUser}</UsernameContainer>
         </CardLayout>
 
     );

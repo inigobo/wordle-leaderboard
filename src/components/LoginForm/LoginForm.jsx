@@ -4,6 +4,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { LoginFormStyles } from './LoginForm.styles';
 import { styled } from '@stitches/react';
+import { useGlobalContext } from '../../contexts/GlobalContext';
 import RegisterCard from '../RegisterCard/RegisterCard';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -18,12 +19,15 @@ const schema = yup.object().shape({
 
 const LoginForm = () => {
     const navigate = useNavigate();
+    const {globalContext, setGlobalContext} = useGlobalContext();
 
     const submitHandler = (event) => {
         console.log('login');
         console.log(event);
+        setGlobalContext({ ...globalContext, currentUser: event.username, isLoggedIn: true })
         navigate('/');
     };
+
 
     return (
         <LoginFormLayout style={LoginFormStyles}>

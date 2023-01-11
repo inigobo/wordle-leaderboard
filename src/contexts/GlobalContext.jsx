@@ -4,6 +4,7 @@ const initialGlobalContext = {
   currentUser: null,
   isLoggedIn: false,
   selectedUser: null,
+  avatarSeed: null,
 }
 
 const GlobalContext = createContext({
@@ -16,7 +17,7 @@ const GlobalContextProvider = ({
   children = null,
   initialValue,
 }) => {
-  const [globalContext, setGlobalContext] = useState( // pasar a GlobalContext.Provider para hacer el contexto dinamico
+  const [globalContext, setGlobalContext] = useState(
     initialValue || initialGlobalContext
   )
 
@@ -36,8 +37,5 @@ const useGlobalContext = () => {
   return context;
 }
 
-export { GlobalContextProvider, useGlobalContext } // <GlobalContextProvider> {children} </GlobalContextProvider> in your app.js
+export { GlobalContextProvider, useGlobalContext } 
 
-// in your children
-// How to use the value and the func to change the value in my component:
-// const { globalContext, setGlobalContext } = useContext(GlobalContext)

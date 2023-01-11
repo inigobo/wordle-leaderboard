@@ -14,7 +14,7 @@ function App() {
   const {globalContext, setGlobalContext} = useGlobalContext();
   const username = localStorage.getItem('username');
   if (username !== null) {
-    setGlobalContext({ ...globalContext, selectedUser: username, isLoggedIn: true });
+    setGlobalContext({ ...globalContext, currentUser: username, isLoggedIn: true });
   }
 
   return (
