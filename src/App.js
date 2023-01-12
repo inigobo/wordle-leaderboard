@@ -1,7 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
-import Header from './components/Header/Header';
 import HeaderNav from './components/Navbar/Navbar';
 import Leaderboard from './pages/Leaderboard/Leaderboard';
 import ProfileDetail from './pages/ProfileDetail/ProfileDetail';
@@ -14,6 +13,7 @@ function App() {
   const {globalContext, setGlobalContext} = useGlobalContext();
   const username = localStorage.getItem('username');
   if (username !== null) {
+    console.log('app -- ',username);
     setGlobalContext({ ...globalContext, currentUser: username, isLoggedIn: true });
   }
 

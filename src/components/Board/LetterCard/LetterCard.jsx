@@ -1,9 +1,9 @@
-import { CardLayoutStyles, AbsentCardStyles, CorrectCardStyles, PresentCardStyles } from "./LetterCard.styles";
+import { CardLayoutStyles } from "./LetterCard.styles";
 import { styled } from "@stitches/react";
 
 const LetterCard = (props) => {
     return (
-        <LetterCardLayout>
+        <LetterCardLayout paint={props.paint}>
             {props.letter}
         </LetterCardLayout>
 
@@ -14,6 +14,3 @@ const LetterCard = (props) => {
 export default LetterCard;
 
 const LetterCardLayout = styled('div', CardLayoutStyles);
-const AbsentCard = styled('div', AbsentCardStyles);
-const CorrectCard = styled('div', CorrectCardStyles);
-const PresentCard = styled('div', PresentCardStyles);

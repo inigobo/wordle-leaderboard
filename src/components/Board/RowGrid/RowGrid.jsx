@@ -3,13 +3,16 @@ import LetterCard from "../LetterCard/LetterCard";
 import { RowGridStyles } from "./RowGrid.styles";
 
 const RowGrid = (props) => {
-    const word = props.row;
+
+    const slicedWord = props.row.word.split('');
+    const slicedPaint = props.row.paint.split('');
+    console.log(props);
     return (
         <RowGridLayout>
             {
-                word.map((letter)=>{
+                slicedWord.map((letter, index)=>{
                     return (
-                        <LetterCard letter={letter}/>
+                        <LetterCard letter={letter} paint={slicedPaint[index]} key={'l'+index}/>
                     )
                 })
             }

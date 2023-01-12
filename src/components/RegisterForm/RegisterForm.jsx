@@ -208,8 +208,8 @@ const RegisterForm = () => {
                                 {
                                     seeds.map((seed, index) => {
                                         return (
-                                            <AvatarOptionContainer className={seed.toString() === values.avatarSeed ? 'selected' : ''}>
-                                                <Form.Check key={index.toString()}
+                                            <AvatarOptionContainer key={index.toString()} className={seed.toString() === values.avatarSeed ? 'selected' : ''}>
+                                                <Form.Check
                                                     id={index.toString()}
                                                     css={{
                                                         '&.form-check': {

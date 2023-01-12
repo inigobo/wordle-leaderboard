@@ -1,0 +1,36 @@
+{
+    "username": "inigob",
+    "fullName": "Iñigo Berganza",
+    "avatarSeed": "asdf",
+    "status": "played",
+    "play": {
+        "playId": "345",
+        "attempts": "1",
+        "board": [
+            {
+                "word": "rueda",
+                "paint": "pmpmp"
+            },
+            {
+                "word": "vater",
+                "paint": "mpmpc"
+            },
+            {
+                "word": "helar",
+                "paint": "mcccc"
+            },
+            {
+                "word": "pelar",
+                "paint": "ccccc"
+            },
+            {
+                "word": "-----",
+                "paint": "wwwww"
+            },
+            {
+                "word": "     ",
+                "paint": "wwwww"
+            }
+        ]
+    }
+}

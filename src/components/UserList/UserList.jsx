@@ -1,25 +1,30 @@
 import UserCard from "../UserCard/UserCard";
 import { useState } from "react";
-import MockPlays from '../../assets/data/mock-plays.json'
-import MockUsers from '../../assets/data/mock-users.json'
+import MockLeaderboard from '../../assets/data/mock-leaderboard.json'
 import { styled } from "@stitches/react";
-import { UserListLayoutStyles, AvatarStyle, TitleContainerStyle, StatsContainerStyle } from "./UserList.styles";
+import { UserListLayoutStyles } from "./UserList.styles";
+import { useGlobalContext } from "../../contexts/GlobalContext";
 
 const UserList = () => {
-    const [players, setPlayers] = useState(MockUsers);
-    const [plays, setPlays] = useState(MockPlays.plays);
-    console.log(plays);
-    const play = plays[0];
-    
+    const [leaderboard, setLeaderboard] = useState(MockLeaderboard.leaderboard);
+    const {globalContext, setGlobalContext} = useGlobalContext();
+
+    const filterLeaderboard = leaderboard;
+
     return (
         <UserListLayout>
             {
-                play.entries.map((entry) => {
+                filterLeaderboard.sort((user1, user2)=>{
+                    return (user1.play.attempts - user2.play.attempts)
+                }
+
+                ).map((user) => {
                     return (
                         <UserCard
-                            key={entry.userId}
-                            username={entry.userId}
-                            score={entry.score.tries}
+                            key={user.username}
+                            username={user.username}
+                            score={user.play.attempts}
+                            avatarSeed={user.avatarSeed}
                         />
                     )
                 })
