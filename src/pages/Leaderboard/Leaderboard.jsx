@@ -6,7 +6,7 @@ import { LeaderboardStyles } from "./Leaderboard.styles";
 const Leaderboard = () => {
     return (
         <LeaderboardLayout>
-            <div>Leaderboard</div>
+            <h3>Leaderboard</h3>
             <UserList/>
         </LeaderboardLayout>)
 }

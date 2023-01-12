@@ -1,0 +1,50 @@
+{
+    "leaderboard": [
+        {
+            "username": "inigob",
+            "fullName": "Iñigo Berganza",
+            "avatarSeed": "asdf",
+            "status":"played",
+            "play": {
+                "playId": "345",
+                "attempts": "1"
+            }
+        },
+        {
+            "username": "javib",
+            "fullName": "Javi",
+            "avatarSeed": "qwer",
+            "play": {
+                "playId": "345",
+                "attempts": "6"
+            }
+        },
+        {
+            "username": "elenal",
+            "fullName": "Elena",
+            "avatarSeed": "jklñ",
+            "play": {
+                "playId": "345",
+                "attempts": "2"
+            }
+        },
+        {
+            "username": "vicenteb",
+            "fullName": "Vicente",
+            "avatarSeed": "uiop",
+            "play": {
+                "playId": "345",
+                "attempts": "3"
+            }
+        },
+        {
+            "username": "jonr",
+            "fullName": "Jon",
+            "avatarSeed": "vbnm",
+            "play": {
+                "playId": "345",
+                "attempts": "5"
+            }
+        }
+    ]
+}

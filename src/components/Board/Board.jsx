@@ -2,20 +2,14 @@ import { BoardLayoutStyles } from "./Board.styles";
 import RowGrid from "./RowGrid/RowGrid";
 import { styled } from "@stitches/react";
 
-const Board = () => {
-    const board =
-        [['r', 'u', 'e', 'd', 'a'],
-        ['o', 'r', 'u', 'g', 'a'],
-        ['o', 'l', 'i', 'v', 'a'],
-        ['h', 'u', 'e', 'c', 'a'],
-        ['t', 'a', 'r', 'o', 't'],
-        ['', '', '', '', '']];
+const Board = (props) => {
+    console.log(props.board)
     return (
         <BoardLayout>
             {
-                board.map((row)=>{
+                props.board.map((word,paint,index)=>{
                     return (
-                        <RowGrid row={row}/>
+                        <RowGrid row={word} paint={paint} key={'r'+index}/>
                     )
                 })
             }

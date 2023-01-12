@@ -1,11 +1,9 @@
 export const ProfileInfoStyle = {
     width: '100%',
     display: 'flex',
-    justifyContent:'center',
-    flexDirection: 'row',
-    '@media (max-width: 820px)': {
-        maxWidth: '352.5px',
-    },
+    flexDirection: 'column',
+    justifyContent: 'center'
+
 }
 
 export const AvatarLayoutStyle = {
@@ -51,5 +49,21 @@ export const StatsStyle = {
         fontSize: '0.75em',
 
     },
+
+}
+export const InfoGridStyle = {
+    width: '100%',
+    display: 'flex',
+    justifyContent:'center',
+    flexDirection: 'row',
+    
+
+}
+export const BoardContainerStyle = {
+    width: '100%',
+    display: 'flex',
+    justifyContent:'center',
+    flexDirection: 'row',
+    padding: '5em 2em 5em 2em'
 
 }

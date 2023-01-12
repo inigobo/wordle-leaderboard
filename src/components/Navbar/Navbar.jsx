@@ -2,16 +2,16 @@ import { useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useGlobalContext } from '../../contexts/GlobalContext';
 import LoginCard from '../LoginCard/LoginCard';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const HeaderNav = () => {
     const { globalContext } = useGlobalContext();
-    useEffect(() => {
-        console.log(globalContext, "nav");
-    }, [globalContext])
+    // useEffect(() => {
+    //     console.log(globalContext, "nav");
+    // }, [globalContext])
+
 
     return (
         <Navbar bg="light" expand="lg">
@@ -20,13 +20,9 @@ const HeaderNav = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <NavDropdown title="Leaderboard" id="basic-nav-dropdown">
-                            <NavDropdown.Item >
-                                <LinkContainer to="/leaderboard">
-                                    <Nav.Link>Today</Nav.Link>
-                                </LinkContainer>
-                            </NavDropdown.Item>
-                        </NavDropdown>
+                        <LinkContainer to="/leaderboard">
+                            <Nav.Link>Leaderboard</Nav.Link>
+                        </LinkContainer>
                         <LinkContainer to="/add">
                             <Nav.Link>Add</Nav.Link>
                         </LinkContainer>

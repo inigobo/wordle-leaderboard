@@ -19,7 +19,7 @@ const UserCard = (props) => {
 
     return (
         <CardLayout onClick={handleSelectCard}>
-            <Avatar seed={props.username}  />
+            <Avatar seed={props.avatarSeed} variant='medium'  />
             <TitleContainer>{props.username}</TitleContainer>
             <StatsContainer>{props.score}</StatsContainer>
         </CardLayout>

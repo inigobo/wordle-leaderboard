@@ -2,23 +2,28 @@
     "users": [
         {
             "userId": "inigob",
-            "username": "Iñigo"
+            "username": "Iñigo",
+            "avatarSeed": "asdf"
         },
         {
             "userId": "javib",
-            "username": "Javi"
+            "username": "Javi",
+            "avatarSeed": "qwer"
         },
         {
             "userId": "elenal",
-            "username": "Elena"
+            "username": "Elena",
+            "avatarSeed": "jklñ"
         },
         {
             "userId": "vicenteb",
-            "username": "Vicente"
+            "username": "Vicente",
+            "avatarSeed": "uiop"
         },
         {
-            "userId": "bertal",
-            "username": "Berta"
+            "userId": "jonr",
+            "username": "Jon",
+            "avatarSeed": "vbnm"
         }
     ]
 }

@@ -20,9 +20,10 @@ const schema = yup.object().shape({
 const LoginForm = () => {
     const navigate = useNavigate();
     const {globalContext, setGlobalContext} = useGlobalContext();
-
+    
     const submitHandler = (event) => {
         console.log('login');
+        localStorage.setItem('username', event.username);
         console.log(event);
         setGlobalContext({ ...globalContext, currentUser: event.username, isLoggedIn: true })
         navigate('/');
