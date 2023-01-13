@@ -1,0 +1,71 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "inigob",
+      "fullName": "Iñigo",
+      "password": "12345678"
+    },
+    {
+      "id": 2,
+      "username": "javib",
+      "fullName": "Javi",
+      "password": "javipassword"
+    },
+    {
+      "id": 3,
+      "username": "elenal",
+      "fullName": "Elena",
+      "password": "elenapassword"
+    },
+    {
+      "id": 4,
+      "username": "vicenteb",
+      "fullName": "Vicente",
+      "password": "vicentepassword"
+    },
+    {
+      "id": 5,
+      "username": "bertal",
+      "fullName": "Berta",
+      "password": "bertapassword"
+    }
+  ],
+  "plays": [
+    {
+      "userId": 1,
+      "playId": 344,
+      "score": {
+        "state": "win",
+        "tries": 2
+      },
+      "attempts": 1,
+      "board": [
+        {
+          "word": "rueda",
+          "paint": "pmpmp"
+        },
+        {
+          "word": "vater",
+          "paint": "mpmpc"
+        },
+        {
+          "word": "helar",
+          "paint": "mcccc"
+        },
+        {
+          "word": "pelar",
+          "paint": "ccccc"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        },
+        {
+          "word": "     ",
+          "paint": "wwwww"
+        }
+      ]
+    }
+  ]
+}
