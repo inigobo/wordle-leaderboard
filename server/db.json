@@ -3,67 +3,166 @@
     {
       "id": 1,
       "username": "inigob",
-      "fullName": "Iñigo",
-      "password": "12345678"
+      "fullName": "Iñigo Berganza",
+      "avatarSeed": "asdf",
+      "password": "password"
     },
     {
       "id": 2,
       "username": "javib",
-      "fullName": "Javi",
-      "password": "javipassword"
+      "fullName": "Javi Berganza",
+      "avatarSeed": "qwer",
+      "password": "password"
     },
     {
       "id": 3,
       "username": "elenal",
-      "fullName": "Elena",
-      "password": "elenapassword"
+      "fullName": "Elena Lazaro",
+      "avatarSeed": "jklñ",
+      "password": "password"
     },
     {
       "id": 4,
       "username": "vicenteb",
-      "fullName": "Vicente",
-      "password": "vicentepassword"
+      "fullName": "Vicente Berganza",
+      "avatarSeed": "uiop",
+      "password": "password"
     },
     {
       "id": 5,
       "username": "bertal",
-      "fullName": "Berta",
-      "password": "bertapassword"
+      "fullName": "Berta Lazaro",
+      "avatarSeed": "vbnm",
+      "password": "password"
     }
   ],
   "plays": [
     {
-      "userId": 1,
       "playId": 344,
-      "score": {
-        "state": "win",
-        "tries": 2
-      },
-      "attempts": 1,
-      "board": [
+      "entries": [
         {
-          "word": "rueda",
-          "paint": "pmpmp"
+          "username": "inigob",
+          "attempts": "1",
+          "status": "won",
+          "board": [
+            {
+              "word": "rueda",
+              "paint": "mmmmm"
+            },
+            {
+              "word": "colon",
+              "paint": "mccpm"
+            },
+            {
+              "word": "polvo",
+              "paint": "ccccc"
+            },
+            {
+              "word": "-----",
+              "paint": "wwwww"
+            },
+            {
+              "word": "-----",
+              "paint": "wwwww"
+            },
+            {
+              "word": "-----",
+              "paint": "wwwww"
+            }
+          ]
         },
         {
-          "word": "vater",
-          "paint": "mpmpc"
+          "username": "bertal",
+          "attempts": "4",
+          "status": "won",
+          "board": [
+            {
+              "word": "cielo",
+              "paint": "mmmpc"
+            },
+            {
+              "word": "lacio",
+              "paint": "pmmmc"
+            },
+            {
+              "word": "pulpo",
+              "paint": "mcccc"
+            },
+            {
+              "word": "polvo",
+              "paint": "ccccc"
+            },
+            {
+              "word": "-----",
+              "paint": "wwwww"
+            },
+            {
+              "word": "     ",
+              "paint": "wwwww"
+            }
+          ]
         },
         {
-          "word": "helar",
-          "paint": "mcccc"
+          "username": "vicenteb",
+          "attempts": "6",
+          "status": "lost",
+          "board": [
+            {
+              "word": "vital",
+              "paint": "pmmmp"
+            },
+            {
+              "word": "aviar",
+              "paint": "mpmmm"
+            },
+            {
+              "word": "mover",
+              "paint": "mcpmm"
+            },
+            {
+              "word": "volar",
+              "paint": "pccmm"
+            },
+            {
+              "word": "moler",
+              "paint": "mccmm"
+            },
+            {
+              "word": "valor",
+              "paint": "pmcpm"
+            }
+          ]
         },
         {
-          "word": "pelar",
-          "paint": "ccccc"
-        },
-        {
-          "word": "-----",
-          "paint": "wwwww"
-        },
-        {
-          "word": "     ",
-          "paint": "wwwww"
+          "username": "elenal",
+          "attempts": "6",
+          "status": "won",
+          "board": [
+            {
+              "word": "vital",
+              "paint": "pmmmp"
+            },
+            {
+              "word": "aviar",
+              "paint": "mpmmm"
+            },
+            {
+              "word": "mover",
+              "paint": "mcpmm"
+            },
+            {
+              "word": "volar",
+              "paint": "pccmm"
+            },
+            {
+              "word": "moler",
+              "paint": "mccmm"
+            },
+            {
+              "word": "polvo",
+              "paint": "ccccc"
+            }
+          ]
         }
       ]
     }

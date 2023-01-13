@@ -4,7 +4,7 @@ import { useGlobalContext } from '../../contexts/GlobalContext';
 import { LoginCardStyles, UsernameContainerStyles } from './LoginCard.styles';
 import Avatar from '../Avatar/Avatar';
 import { useNavigate } from 'react-router-dom';
-import MockUsers from '../../assets/data/mock-users.json';
+import { getUsers } from '../../services/apiCalls';
 
 const LoginCard = () => {
 
@@ -14,16 +14,15 @@ const LoginCard = () => {
         console.log(globalContext, "nav");
     }, [globalContext]);
 
-    const [users, setUsers] = useState(MockUsers.users);
-    console.log("users ",users);
-    console.log("current ",globalContext.currentUser);
+    const users = getUsers();
+    console.log(users);
 
     const showUser = users.find((user) => {
         return (
             user.username === globalContext.currentUser
         );
     });
-    
+
     const handleClickCard = (event) => {
         event.preventDefault();
         event.stopPropagation();

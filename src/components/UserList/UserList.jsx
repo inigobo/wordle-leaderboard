@@ -1,24 +1,17 @@
 import UserCard from "../UserCard/UserCard";
 import { useState } from "react";
-import MockLeaderboard from '../../assets/data/mock-leaderboard.json'
 import MockUsers from '../../assets/data/mock-users.json'
 import MockPlays from '../../assets/data/mock-plays.json'
 import { styled } from "@stitches/react";
 import { UserListLayoutStyles } from "./UserList.styles";
-import { useGlobalContext } from "../../contexts/GlobalContext";
+import { getUsers, getPlaysById } from "../../services/apiCalls";
 
 const UserList = ({ playId }) => {
 
-    const [users, setUsers] = useState(MockUsers.users);
-    const [plays, setPlays] = useState(MockPlays.plays);
+    const [users, setUsers] = getUsers();
+    const [play, setPlay] = getPlaysById(playId);
 
-    const currentPlay = plays.find((play) => {
-        return (
-            play.playId === playId
-        );
-    });
-
-    const filterLeaderboard = currentPlay.entries;
+    const filterLeaderboard = play.entries;
 
     return (
         <UserListLayout>

@@ -1,29 +1,39 @@
 {
     "users": [
         {
+            "id": 1,
             "username": "inigob",
             "fullName": "Iñigo Berganza",
-            "avatarSeed": "asdf"
+            "avatarSeed": "asdf",
+            "password": "password"
         },
         {
+            "id": 2,
             "username": "javib",
             "fullName": "Javi Berganza",
-            "avatarSeed": "qwer"
+            "avatarSeed": "qwer",
+            "password": "password"
         },
         {
+            "id": 3,
             "username": "elenal",
             "fullName": "Elena Lazaro",
-            "avatarSeed": "jklñ"
+            "avatarSeed": "jklñ",
+            "password": "password"
         },
         {
+            "id": 4,
             "username": "vicenteb",
             "fullName": "Vicente Berganza",
-            "avatarSeed": "uiop"
+            "avatarSeed": "uiop",
+            "password": "password"
         },
         {
+            "id": 5,
             "username": "bertal",
             "fullName": "Berta Lazaro",
-            "avatarSeed": "vbnm"
+            "avatarSeed": "vbnm",
+            "password": "password"
         }
     ]
 }

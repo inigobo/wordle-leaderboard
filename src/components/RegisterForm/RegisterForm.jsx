@@ -9,7 +9,7 @@ import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../../contexts/GlobalContext';
 import { AvatarOptionStyles, AvatarSelectorStyles } from '../AvatarSelector/AvatarSelector.styles';
-import { getSGV } from '../../services/apiAvatars';
+import { getSGV } from '../../services/apiCalls';
 
 
 const schema = yup.object().shape({
