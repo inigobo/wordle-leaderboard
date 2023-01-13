@@ -4,42 +4,54 @@ import { styled } from '@stitches/react';
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from '../../contexts/GlobalContext';
 import InfoContainer from "./InfoContainer/InfoContainer";
-import MockProfile from '../../assets/data/mock-profile.json'
+import MockUsers from '../../assets/data/mock-users.json'
+import MockPlays from '../../assets/data/mock-plays.json'
 import { useState } from 'react';
 import Board from '../Board/Board';
 
-const ProfileInfo = (props) => {
-    let navigate = useNavigate();
+const ProfileInfo = () => {
+
     const { globalContext, setGlobalContext } = useGlobalContext();
 
-    const handleSelectCard = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        console.log(event.target.value);
-        setGlobalContext({ ...globalContext, selectedUser: props.username });
-        console.log(globalContext, "card");
-        navigate('/profile');
-    };
+    const [users, setUsers] = useState(MockUsers.users);
+    const [plays, setPlays] = useState(MockPlays.plays);
 
-    const [profile, setProfile] = useState(MockProfile);
-    console.log(profile);
+    console.log(users);
+
+    const currentGameId = 344;
+
+    const showUser = users.find((user) => {
+        return (
+            user.username === globalContext.selectedUser
+        );
+    });
+
+    const showPlay = plays.find((play) => {
+        return (
+            play.playId === currentGameId
+        );
+    }).entries.find((entry) => {
+        return (
+            entry.username === globalContext.selectedUser
+        );
+    });
 
 
     return (
 
-        <ProfileInfoLayout onClick={handleSelectCard}>
+        <ProfileInfoLayout>
             <InfoGrid>
                 <AvatarLayout>
-                    <Avatar seed={globalContext.avatarSeed} variant={'big'} />
+                    <Avatar seed={showUser.avatarSeed} variant={'big'} />
                     <NameContainer>
-                        {profile.fullName}
+                        {showUser.fullName}
                     </NameContainer>
                     <UsernameContainer>
-                        {profile.selectedUser}
+                        {globalContext.selectedUser}
                     </UsernameContainer>
                 </AvatarLayout>
                 <StatsLayout>
-                    <InfoContainer type='today' score={12} />
+                    <InfoContainer type='today' score={showPlay.attempts} />
                     <InfoContainer type='all-time' score={97} />
                     {/* <InfoContainer type='position' score={`#${props.position}`} /> */}
                     <InfoContainer type='position' score={`#1`} />
@@ -47,7 +59,7 @@ const ProfileInfo = (props) => {
                 </StatsLayout>
             </InfoGrid>
             <BoardContainer>
-                <Board board={profile.play.board} />
+                <Board board={showPlay.board} />
             </BoardContainer>
         </ProfileInfoLayout>
     )

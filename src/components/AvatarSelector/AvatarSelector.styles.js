@@ -12,7 +12,6 @@ export const AvatarOptionStyles = {
     display: 'flex',
     justifyContent: 'center',
     border: '1px solid lightgrey',
-    padding: '0 1.2em 0 0',
     /* HIDE RADIO */
     '[type = radio]': {
         display: 'none',

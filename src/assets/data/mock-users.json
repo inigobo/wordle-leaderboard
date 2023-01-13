@@ -1,28 +1,28 @@
 {
     "users": [
         {
-            "userId": "inigob",
-            "username": "Iñigo",
+            "username": "inigob",
+            "fullName": "Iñigo Berganza",
             "avatarSeed": "asdf"
         },
         {
-            "userId": "javib",
-            "username": "Javi",
+            "username": "javib",
+            "fullName": "Javi Berganza",
             "avatarSeed": "qwer"
         },
         {
-            "userId": "elenal",
-            "username": "Elena",
+            "username": "elenal",
+            "fullName": "Elena Lazaro",
             "avatarSeed": "jklñ"
         },
         {
-            "userId": "vicenteb",
-            "username": "Vicente",
+            "username": "vicenteb",
+            "fullName": "Vicente Berganza",
             "avatarSeed": "uiop"
         },
         {
-            "userId": "jonr",
-            "username": "Jon",
+            "username": "bertal",
+            "fullName": "Berta Lazaro",
             "avatarSeed": "vbnm"
         }
     ]

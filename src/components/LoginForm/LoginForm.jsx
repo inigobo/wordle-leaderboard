@@ -24,8 +24,7 @@ const LoginForm = () => {
     const submitHandler = (event) => {
         console.log('login');
         localStorage.setItem('username', event.username);
-        console.log(event);
-        setGlobalContext({ ...globalContext, currentUser: event.username, isLoggedIn: true })
+        setGlobalContext({ ...globalContext, currentUser: event.username, isLoggedIn: true, avatarSeed: event.avatarSeed })
         navigate('/');
     };
 
@@ -60,6 +59,7 @@ const LoginForm = () => {
                                     type="text"
                                     name="username"
                                     value={values.username}
+                                    autoComplete='username'
                                     placeholder='Username'
                                     onChange={handleChange('username')}
                                     onBlur={handleBlur('username')}
@@ -98,6 +98,7 @@ const LoginForm = () => {
                                 <Form.Control
                                     type="password"
                                     placeholder='Password'
+                                    autoComplete='current-password'
                                     value={values.password}
                                     onChange={handleChange('password')}
                                     onBlur={handleBlur('password')}

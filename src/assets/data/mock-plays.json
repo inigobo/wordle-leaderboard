@@ -4,40 +4,136 @@
             "playId": 344,
             "entries": [
                 {
-                    "userId": "inigob",
-                    "score": {
-                        "state": "win",
-                        "tries": 2
-                    }
+                    "username": "inigob",
+                    "attempts": "1",
+                    "status": "won",
+                    "board": [
+                        {
+                            "word": "rueda",
+                            "paint": "mmmmm"
+                        },
+                        {
+                            "word": "colon",
+                            "paint": "mccpm"
+                        },
+                        {
+                            "word": "polvo",
+                            "paint": "ccccc"
+                        },
+                        {
+                            "word": "-----",
+                            "paint": "wwwww"
+                        },
+                        {
+                            "word": "-----",
+                            "paint": "wwwww"
+                        },
+                        {
+                            "word": "-----",
+                            "paint": "wwwww"
+                        }
+                    ]
                 },
                 {
-                    "userId": "javib",
-                    "score": {
-                        "state": "lost",
-                        "tries": 0
-                    }
+                    "username": "javib",
+                    "attempts": "",
+                    "status": "pending",
+                    "board": []
                 },
                 {
-                    "userId": "elenal",
-                    "score": {
-                        "state": "win",
-                        "tries": 3
-                    }
+                    "username": "bertal",
+                    "attempts": "4",
+                    "status": "won",
+                    "board": [
+                        {
+                            "word": "cielo",
+                            "paint": "mmmpc"
+                        },
+                        {
+                            "word": "lacio",
+                            "paint": "pmmmc"
+                        },
+                        {
+                            "word": "pulpo",
+                            "paint": "mcccc"
+                        },
+                        {
+                            "word": "polvo",
+                            "paint": "ccccc"
+                        },
+                        {
+                            "word": "-----",
+                            "paint": "wwwww"
+                        },
+                        {
+                            "word": "     ",
+                            "paint": "wwwww"
+                        }
+                    ]
                 },
                 {
-                    "userId": "vicenteb",
-                    "score": {
-                        "state": "win",
-                        "tries": 1
-                    }
+                    "username": "vicenteb",
+                    "attempts": "6",
+                    "status": "lost",
+                    "board": [
+                        {
+                            "word": "vital",
+                            "paint": "pmmmp"
+                        },
+                        {
+                            "word": "aviar",
+                            "paint": "mpmmm"
+                        },
+                        {
+                            "word": "mover",
+                            "paint": "mcpmm"
+                        },
+                        {
+                            "word": "volar",
+                            "paint": "pccmm"
+                        },
+                        {
+                            "word": "moler",
+                            "paint": "mccmm"
+                        },
+                        {
+                            "word": "valor",
+                            "paint": "pmcpm"
+                        }
+                    ]
                 },
                 {
-                    "userId": "bertal",
-                    "score": {
-                        "state": "pending",
-                        "tries": 0
-                    }
+                    "username": "elenal",
+                    "attempts": "6",
+                    "status": "won",
+                    "board": [
+                        {
+                            "word": "vital",
+                            "paint": "pmmmp"
+                        },
+                        {
+                            "word": "aviar",
+                            "paint": "mpmmm"
+                        },
+                        {
+                            "word": "mover",
+                            "paint": "mcpmm"
+                        },
+                        {
+                            "word": "volar",
+                            "paint": "pccmm"
+                        },
+                        {
+                            "word": "moler",
+                            "paint": "mccmm"
+                        },
+                        {
+                            "word": "polvo",
+                            "paint": "ccccc"
+                        }
+                    ]
                 }
+                
             ]
         }
     ]

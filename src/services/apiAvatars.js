@@ -4,7 +4,7 @@ const API_ROOT = 'https://avatars.dicebear.com/api/pixel-art/';
 
 export const generateAvatar = async (seed) => {
     return await axios
-        .get(`${API_ROOT}/:${seed}.svg`)
+        .get(`${API_ROOT}/${seed}.svg`)
         .then((response) => {
             return response.data;
         })
@@ -13,6 +13,6 @@ export const generateAvatar = async (seed) => {
 };
 
 export const getSGV = (seed) => {
-    return `${API_ROOT}/:${seed}.svg`;
+    return `${API_ROOT}/${seed}.svg`;
 
 };

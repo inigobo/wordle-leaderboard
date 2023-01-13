@@ -5,22 +5,23 @@ import HeaderNav from './components/Navbar/Navbar';
 import Leaderboard from './pages/Leaderboard/Leaderboard';
 import ProfileDetail from './pages/ProfileDetail/ProfileDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { GlobalContextProvider, useGlobalContext } from './contexts/GlobalContext';
+import { GlobalContextProvider } from './contexts/GlobalContext';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 
 function App() {
-  const {globalContext, setGlobalContext} = useGlobalContext();
   const username = localStorage.getItem('username');
-  if (username !== null) {
-    console.log('app -- ',username);
-    setGlobalContext({ ...globalContext, currentUser: username, isLoggedIn: true });
-  }
+  const avatarSeed = localStorage.getItem('avatarSeed');
 
   return (
     <div className="App">
       <BrowserRouter>
-        <GlobalContextProvider>
+        <GlobalContextProvider initialValue={{
+          currentUser: username,
+          isLoggedIn: true,
+          selectedUser: username,
+          avatarSeed: avatarSeed,
+        }}>
           <HeaderNav />
           <Routes>
             <Route path="/" element={<Home />} />
