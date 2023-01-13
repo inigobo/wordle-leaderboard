@@ -81,6 +81,7 @@ const RegisterForm = () => {
                                     <Form.Control
                                         type="text"
                                         name="firstName"
+                                        autoCapitalize='true'
                                         value={values.firstName}
                                         placeholder='Name'
                                         onChange={handleChange('firstName')}
@@ -102,6 +103,7 @@ const RegisterForm = () => {
                                     <Form.Control
                                         type="text"
                                         name="surname"
+                                        autoCapitalize='true'
                                         value={values.surname}
                                         placeholder='Surname'
                                         onChange={handleChange('surname')}
@@ -125,6 +127,7 @@ const RegisterForm = () => {
                                     <Form.Control
                                         type="text"
                                         name="username"
+                                        autoComplete='new-username'
                                         defaultValue={values.username}
                                         placeholder='Username'
                                         onChange={handleChange('username')}
@@ -169,6 +172,7 @@ const RegisterForm = () => {
                                 <Form.Control
                                     type="password"
                                     name='password'
+                                    autoComplete='new-password'
                                     placeholder='Password'
                                     value={values.password}
                                     onChange={handleChange('password')}
@@ -189,6 +193,7 @@ const RegisterForm = () => {
                                 <Form.Control
                                     type="password"
                                     placeholder='Confirm password'
+                                    autoComplete='new-password'
                                     name='confirmPassword'
                                     value={values.confirmPassword}
                                     onChange={handleChange('confirmPassword')}
@@ -203,7 +208,6 @@ const RegisterForm = () => {
                         </Form.Group>
                         <h3>Avatar</h3>
                         <Form.Group controlId='validationAvatar'>
-
                             <AvatarRadioContainer>
                                 {
                                     seeds.map((seed, index) => {
@@ -213,7 +217,8 @@ const RegisterForm = () => {
                                                     id={index.toString()}
                                                     css={{
                                                         '&.form-check': {
-                                                            padding: '0',
+                                                            height: '0',
+                                                            width: '0',
                                                         }
                                                     }}
                                                 >

@@ -4,8 +4,6 @@ import { ProfileLayoutStyles } from "./ProfileDetail.styles";
 import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 
 const ProfileDetail = () => {
-    const { globalContext } = useGlobalContext();
-
     return (
         <ProfileLayout>
             <ProfileInfo/>

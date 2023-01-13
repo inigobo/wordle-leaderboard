@@ -7,18 +7,18 @@ export const AvatarStyles = {
     variants: {
         size: {
             small: {
-                maxWidth: '50px',
-                maxHeigth: '50px',
+                width: '50px',
+                heigth: '50px',
                 borderRadius: '4px',
             },
             medium: {
-                maxWidth: '90px',
-                maxHeigth: '90px',
+                width: '90px',
+                heigth: '90px',
                 borderRadius: '4px',
             },
             big: {
-                maxWidth: '140px',
-                maxHeigth: '140px',
+                width: '140px',
+                heigth: '140px',
                 borderRadius: '7px',
             }
         }

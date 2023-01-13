@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { useGlobalContext } from '../../contexts/GlobalContext';
 import LoginCard from '../LoginCard/LoginCard';
 import { LinkContainer } from 'react-router-bootstrap';
+import AddBoardModal from '../AddBoardModal/AddBoardModal';
 
 const HeaderNav = () => {
     const { globalContext } = useGlobalContext();
@@ -20,12 +21,14 @@ const HeaderNav = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <LinkContainer to="/leaderboard">
-                            <Nav.Link>Leaderboard</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer to="/add">
-                            <Nav.Link>Add</Nav.Link>
-                        </LinkContainer>
+                        <Nav.Item>
+                            <LinkContainer to="/leaderboard">
+                                <Nav.Link>Leaderboard</Nav.Link>
+                            </LinkContainer>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <AddBoardModal />
+                        </Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
 
