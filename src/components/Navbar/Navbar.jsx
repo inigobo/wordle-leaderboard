@@ -8,10 +8,15 @@ import { LinkContainer } from 'react-router-bootstrap';
 import AddBoardModal from '../AddBoardModal/AddBoardModal';
 
 const HeaderNav = () => {
-    const { globalContext } = useGlobalContext();
+    const { globalContext, setGlobalContext } = useGlobalContext();
     // useEffect(() => {
     //     console.log(globalContext, "nav");
     // }, [globalContext])
+
+    const handleLogout = () => {
+        localStorage.removeItem('username');
+        setGlobalContext({...globalContext, isLoggedIn: false, currentUser: ''})
+    }
 
 
     return (
@@ -27,13 +32,19 @@ const HeaderNav = () => {
                             </LinkContainer>
                         </Nav.Item>
                         <Nav.Item>
-                            <AddBoardModal />
+                            {globalContext.isLoggedIn && <AddBoardModal />}
                         </Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
 
                 <Navbar.Collapse className="justify-content-end">
-                    {globalContext.isLoggedIn && <LoginCard />}
+                    {globalContext.isLoggedIn &&
+                        <>
+                            <LoginCard />
+                            <LinkContainer to="/" onClick={handleLogout}>
+                                <Nav.Link >Logout</Nav.Link>
+                            </LinkContainer>
+                        </>}
                     {!globalContext.isLoggedIn && <LinkContainer to="/login"><Nav.Link >Login</Nav.Link></LinkContainer>}
                 </Navbar.Collapse>
             </Container>

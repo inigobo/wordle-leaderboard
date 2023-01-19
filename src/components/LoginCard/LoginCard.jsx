@@ -10,30 +10,36 @@ const LoginCard = () => {
 
     let navigate = useNavigate();
     const { globalContext, setGlobalContext } = useGlobalContext();
+
+    const [user, setUser] = useState();
+
     useEffect(() => {
-        console.log(globalContext, "nav");
-    }, [globalContext]);
+        if (!user) {
+            getUsers().then(
+                (response) => {
+                    console.log(response);
+                    const user = response.data.find((user) => {
+                        return (
+                            user.username === globalContext.currentUser
+                        );
+                    });
+                    setUser(user);
+                });
+        }
+    }, [user]);
 
-    const users = getUsers();
-    console.log(users);
-
-    const showUser = users.find((user) => {
-        return (
-            user.username === globalContext.currentUser
-        );
-    });
 
     const handleClickCard = (event) => {
         event.preventDefault();
         event.stopPropagation();
-        setGlobalContext({ ...globalContext, selectedUser: showUser.username });
+        setGlobalContext({ ...globalContext, selectedUser: user.username });
         navigate('/profile');
     }
 
     return (
         <CardLayout variant='bg' onClick={handleClickCard}>
-            <Avatar seed={showUser.avatarSeed} variant='small'></Avatar>
-            <UsernameContainer>{globalContext.currentUser}</UsernameContainer>
+            <Avatar seed={user?.avatarSeed} variant='small'></Avatar>
+            <UsernameContainer>{user?.username}</UsernameContainer>
         </CardLayout>
 
     );

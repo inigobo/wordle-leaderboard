@@ -9,7 +9,7 @@ import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../../contexts/GlobalContext';
 import { AvatarOptionStyles, AvatarSelectorStyles } from '../AvatarSelector/AvatarSelector.styles';
-import { getSGV } from '../../services/apiCalls';
+import { getSGV, registerUser } from '../../services/apiCalls';
 
 
 const schema = yup.object().shape({
@@ -43,7 +43,20 @@ const RegisterForm = () => {
         console.log('register');
         console.log(event);
         setGlobalContext({ ...globalContext, currentUser: event.username, avatarSeed: event.avatarSeed, isLoggedIn: false })
-        navigate('/login');
+        registerUser({
+            username: event.username,
+            fullName: `${event.firstName} ${event.surname}`,
+            avatarSeed: event.avatarSeed,
+            password: event.password
+        })
+            .then(response => {
+                console.log(response);
+                navigate('/login');
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        
     };
 
     return (

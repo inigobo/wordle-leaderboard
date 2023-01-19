@@ -1,23 +1,43 @@
 import UserCard from "../UserCard/UserCard";
-import { useState } from "react";
-import MockUsers from '../../assets/data/mock-users.json'
-import MockPlays from '../../assets/data/mock-plays.json'
+import { useEffect, useState } from "react";
 import { styled } from "@stitches/react";
 import { UserListLayoutStyles } from "./UserList.styles";
-import { getUsers, getPlaysById } from "../../services/apiCalls";
+import { getUsers, getPlays, getPlaysById } from "../../services/apiCalls";
 
 const UserList = ({ playId }) => {
 
-    const [users, setUsers] = getUsers();
-    const [play, setPlay] = getPlaysById(playId);
+    const [users, setUsers] = useState([]);
+    const [entries, setEntries] = useState([]);
 
-    const filterLeaderboard = play.entries;
+    useEffect(() => {
+        if (users.length === 0) {
+            getUsers().then(
+                (response) => {
+                    setUsers(response.data);
+                });
+        }
+    }, [users]);
+
+
+    useEffect(() => {
+        if (entries.length === 0) {
+            getPlaysById(playId)
+                .then(
+                    (response) => {
+                        console.log(response.data);
+                        console.log(playEntries);
+                        setEntries(playEntries);
+                    });
+        }
+    }, [entries]);
+
+    console.log(entries);
 
     return (
         <UserListLayout>
             {
-                filterLeaderboard.filter((entry) => {
-                    return(
+                entries.filter((entry) => {
+                    return (
                         entry.status !== 'pending'
                     );
                 }).sort((entry1, entry2) => {
