@@ -1,7 +1,6 @@
 export const AvatarStyles = {
 
-    border: '4px solid lightgrey',
-    borderRadius: '4px',
+    border: '2.5px solid lightgrey',
     height: '100%',
     width: '100%',
     variants: {
@@ -9,17 +8,17 @@ export const AvatarStyles = {
             small: {
                 width: '50px',
                 heigth: '50px',
-                borderRadius: '4px',
+                borderRadius: '0.4em',
             },
             medium: {
                 width: '90px',
                 heigth: '90px',
-                borderRadius: '4px',
+                borderRadius: '1em',
             },
             big: {
                 width: '140px',
                 heigth: '140px',
-                borderRadius: '7px',
+                borderRadius: '1em',
             }
         }
     }

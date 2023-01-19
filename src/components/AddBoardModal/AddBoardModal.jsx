@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Col, Form, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useGlobalContext } from '../../contexts/GlobalContext';
@@ -30,6 +30,8 @@ const AddBoardModal = () => {
             });
     }
 
+    const [currentPlayId, setCurrentPlayId] = useState(344);
+
     return (
         <>
             <Button variant="secondary" onClick={handleShow}>
@@ -48,8 +50,16 @@ const AddBoardModal = () => {
                 <Modal.Body>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="addBoardForm.ControlInput1">
-                            <Form.Label>Submitting as</Form.Label>
-                            <Form.Control type="text" value={globalContext.currentUser} disabled/>
+                            <Row>
+                                <Col>
+                                    <Form.Label>Submitting as</Form.Label>
+                                    <Form.Control type="text" value={globalContext.currentUser} disabled />
+                                </Col>
+                                <Col>
+                                    <Form.Label>Today's play ID</Form.Label>
+                                    <Form.Control type="text" value={currentPlayId} disabled />
+                                </Col>
+                            </Row>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="addBoardForm.ControlTextarea1">
                             <Form.Label>Paste your board result here</Form.Label>
