@@ -2,62 +2,62 @@ import UserCard from "../UserCard/UserCard";
 import { useEffect, useState } from "react";
 import { styled } from "@stitches/react";
 import { UserListLayoutStyles } from "./UserList.styles";
-import { getUsers, getPlays, getPlaysById } from "../../services/apiCalls";
+import { getUsers, getPlaysById } from "../../services/apiCalls";
 
-const UserList = ({ playId }) => {
+const UserList = ({ playId, searchTerm }) => {
 
     const [users, setUsers] = useState([]);
     const [entries, setEntries] = useState([]);
 
     useEffect(() => {
-        if (users.length === 0) {
-            getUsers().then(
-                (response) => {
-                    setUsers(response.data);
-                });
-        }
-    }, [users]);
+        getUsers().then(
+            (response) => {
+                setUsers(response.data);
+            });
+    }, [searchTerm]);
 
 
     useEffect(() => {
-        if (entries.length === 0) {
-            getPlaysById(playId)
-                .then(
-                    (response) => {
-                        console.log(response.data);
-                        console.log(playEntries);
-                        setEntries(playEntries);
-                    });
-        }
-    }, [entries]);
+        getPlaysById(playId)
+            .then(
+                (response) => {
+                    console.log(response.data);
+                    setEntries(response.data);
+                });
+    }, [playId]);
 
-    console.log(entries);
+
 
     return (
         <UserListLayout>
             {
                 entries.filter((entry) => {
                     return (
-                        entry.status !== 'pending'
-                    );
-                }).sort((entry1, entry2) => {
-                    return (entry1.attempts - entry2.attempts)
-                }).map((entry) => {
-                    let user = users.find((user) => {
-                        return (
-                            user.username === entry.username
-                        );
-                    });
-                    return (
-                        <UserCard
-                            key={entry.username}
-                            username={entry.username}
-                            score={entry.attempts}
-                            avatarSeed={user.avatarSeed}
-                            status={entry.status}
-                        />
+                        entry.username.includes(searchTerm)
                     );
                 })
+                    .filter((entry) => {
+                        return (
+                            entry.status !== 'pending'
+                        );
+                    }).sort((entry1, entry2) => {
+                        return (entry1.attempts - entry2.attempts)
+                    }).map((entry) => {
+                        let user = users.find((user) => {
+                            return (
+                                user.username === entry.username
+                            );
+                        });
+                        return (
+                            <UserCard
+                                key={entry.username}
+                                username={entry.username}
+                                score={entry.attempts}
+                                avatarSeed={user.avatarSeed}
+                                status={entry.status}
+                            />
+                        );
+                    })
             }
         </UserListLayout>
     )
