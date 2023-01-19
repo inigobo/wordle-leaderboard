@@ -9,25 +9,47 @@ import RegisterCard from '../RegisterCard/RegisterCard';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
+import { getUser } from '../../services/apiCalls';
 
 
 
 const schema = yup.object().shape({
-    username: yup.string().min(4, 'Too short!').max(12, 'Too long!').required(),
-    email: yup.string().email('Invalid email').required('Required'),
+    username: yup.string().required().test('username-exists', 'Incorrect username', async (value) => {
+        const user = await getUser(value);
+        console.log('val', user);
+        if (user) {
+            console.log('true', user);
+            return true;
+        } else {
+            console.log('false', user);
+            return false;
+        }
+    }),
+    password: yup.string().when('username', (username, schema) => {
+        if(username) {
+            return schema.test('password-correct', 'Incorrect password', async value => {
+                const user = await getUser(username);
+                if (user && user.password === value) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        }
+        return schema;
+    }),
 });
 
 const LoginForm = () => {
     const navigate = useNavigate();
-    const {globalContext, setGlobalContext} = useGlobalContext();
-    
+    const { globalContext, setGlobalContext } = useGlobalContext();
+
     const submitHandler = (event) => {
         console.log('login');
         localStorage.setItem('username', event.username);
         setGlobalContext({ ...globalContext, currentUser: event.username, isLoggedIn: true, avatarSeed: event.avatarSeed })
         navigate('/');
     };
-
 
     return (
         <LoginFormLayout style={LoginFormStyles}>
@@ -37,12 +59,12 @@ const LoginForm = () => {
                 onChange={console.log}
                 initialValues={{
                     username: '',
-                    email: '',
                     password: '',
                 }}
+                validateOnChange={false}
             >
                 {({
-                    handleSubmit={submitHandler},
+                    handleSubmit = { submitHandler },
                     handleChange,
                     handleBlur,
                     touched,
@@ -69,25 +91,6 @@ const LoginForm = () => {
                                 <Form.Control.Feedback></Form.Control.Feedback>
                                 <Form.Control.Feedback type="invalid">
                                     {errors.username}
-                                </Form.Control.Feedback>
-                            </FloatingLabel>
-
-                            <FloatingLabel
-                                controlId="floatingInput2"
-                                label="Email"
-                                name="email"
-                                className="mb-3">
-                                <Form.Control
-                                    type="email"
-                                    placeholder="name@example.com"
-                                    value={values.email}
-                                    onChange={handleChange('email')}
-                                    onBlur={handleBlur('email')}
-                                    isInvalid={touched.email && errors.email}
-                                />
-                                <Form.Control.Feedback></Form.Control.Feedback>
-                                <Form.Control.Feedback type="invalid">
-                                    {errors.email}
                                 </Form.Control.Feedback>
                             </FloatingLabel>
 

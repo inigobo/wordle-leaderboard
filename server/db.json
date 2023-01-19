@@ -3,58 +3,112 @@
     {
       "id": 1,
       "username": "inigob",
-      "fullName": "Iñigo",
-      "password": "12345678"
+      "fullName": "Iñigo Berganza",
+      "avatarSeed": "asdf",
+      "password": "password"
     },
     {
       "id": 2,
       "username": "javib",
-      "fullName": "Javi",
-      "password": "javipassword"
+      "fullName": "Javi Berganza",
+      "avatarSeed": "qwer",
+      "password": "password"
     },
     {
       "id": 3,
       "username": "elenal",
-      "fullName": "Elena",
-      "password": "elenapassword"
+      "fullName": "Elena Lazaro",
+      "avatarSeed": "jklñ",
+      "password": "password"
     },
     {
       "id": 4,
       "username": "vicenteb",
-      "fullName": "Vicente",
-      "password": "vicentepassword"
+      "fullName": "Vicente Berganza",
+      "avatarSeed": "uiop",
+      "password": "password"
     },
     {
       "id": 5,
       "username": "bertal",
-      "fullName": "Berta",
-      "password": "bertapassword"
+      "fullName": "Berta Lazaro",
+      "avatarSeed": "vbnm",
+      "password": "password"
+    },
+    {
+      "username": "teresi",
+      "email": "tere@igi.com",
+      "password": "asdfasdf",
+      "firstName": "Teresa",
+      "surname": "Vadillo",
+      "confirmPassword": "asdfasdf",
+      "avatarSeed": "rn4",
+      "id": 6
+    },
+    {
+      "username": "yvonnecor",
+      "fullName": "Yvonne  Corcuera",
+      "avatarSeed": "rn2",
+      "password": "qwertyuiop",
+      "id": 7
+    },
+    {
+      "id": 8
     }
   ],
   "plays": [
     {
-      "userId": 1,
       "playId": 344,
-      "score": {
-        "state": "win",
-        "tries": 2
-      },
-      "attempts": 1,
+      "username": "inigob",
+      "attempts": "1",
+      "status": "won",
       "board": [
         {
           "word": "rueda",
-          "paint": "pmpmp"
+          "paint": "mmmmm"
         },
         {
-          "word": "vater",
-          "paint": "mpmpc"
+          "word": "colon",
+          "paint": "mccpm"
         },
         {
-          "word": "helar",
+          "word": "polvo",
+          "paint": "ccccc"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        }
+      ]
+    },
+    {
+      "playId": 344,
+      "username": "bertal",
+      "attempts": "4",
+      "status": "won",
+      "board": [
+        {
+          "word": "cielo",
+          "paint": "mmmpc"
+        },
+        {
+          "word": "lacio",
+          "paint": "pmmmc"
+        },
+        {
+          "word": "pulpo",
           "paint": "mcccc"
         },
         {
-          "word": "pelar",
+          "word": "polvo",
           "paint": "ccccc"
         },
         {
@@ -63,6 +117,198 @@
         },
         {
           "word": "     ",
+          "paint": "wwwww"
+        }
+      ]
+    },
+    {
+      "playId": 344,
+      "username": "vicenteb",
+      "attempts": "6",
+      "status": "lost",
+      "board": [
+        {
+          "word": "vital",
+          "paint": "pmmmp"
+        },
+        {
+          "word": "aviar",
+          "paint": "mpmmm"
+        },
+        {
+          "word": "mover",
+          "paint": "mcpmm"
+        },
+        {
+          "word": "volar",
+          "paint": "pccmm"
+        },
+        {
+          "word": "moler",
+          "paint": "mccmm"
+        },
+        {
+          "word": "valor",
+          "paint": "pmcpm"
+        }
+      ]
+    },
+    {
+      "playId": 344,
+      "username": "elenal",
+      "attempts": "6",
+      "status": "won",
+      "board": [
+        {
+          "word": "vital",
+          "paint": "pmmmp"
+        },
+        {
+          "word": "aviar",
+          "paint": "mpmmm"
+        },
+        {
+          "word": "mover",
+          "paint": "mcpmm"
+        },
+        {
+          "word": "volar",
+          "paint": "pccmm"
+        },
+        {
+          "word": "moler",
+          "paint": "mccmm"
+        },
+        {
+          "word": "polvo",
+          "paint": "ccccc"
+        }
+      ]
+    },
+    {
+      "playId": 345,
+      "username": "inigob",
+      "attempts": "3",
+      "status": "won",
+      "board": [
+        {
+          "word": "rueda",
+          "paint": "pmcpc"
+        },
+        {
+          "word": "trepa",
+          "paint": "mpcmc"
+        },
+        {
+          "word": "caera",
+          "paint": "ppccc"
+        },
+        {
+          "word": "acera",
+          "paint": "ccccc"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        }
+      ]
+    },
+    {
+      "playId": 345,
+      "username": "bertal",
+      "attempts": "4",
+      "status": "won",
+      "board": [
+        {
+          "word": "cielo",
+          "paint": "pmcmm"
+        },
+        {
+          "word": "greca",
+          "paint": "mpcpc"
+        },
+        {
+          "word": "acera",
+          "paint": "ccccc"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        },
+        {
+          "word": "     ",
+          "paint": "wwwww"
+        }
+      ]
+    },
+    {
+      "playId": 345,
+      "username": "vicenteb",
+      "attempts": "2",
+      "status": "lost",
+      "board": [
+        {
+          "word": "pilar",
+          "paint": "mmmpp"
+        },
+        {
+          "word": "acera",
+          "paint": "ccccc"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        }
+      ]
+    },
+    {
+      "playId": 345,
+      "username": "elenal",
+      "attempts": "2",
+      "status": "won",
+      "board": [
+        {
+          "word": "vital",
+          "paint": "mmmpm"
+        },
+        {
+          "word": "aviar",
+          "paint": "cmmpp"
+        },
+        {
+          "word": "acera",
+          "paint": "ccccc"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        },
+        {
+          "word": "-----",
           "paint": "wwwww"
         }
       ]

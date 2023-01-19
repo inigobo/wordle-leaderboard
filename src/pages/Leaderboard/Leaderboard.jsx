@@ -6,7 +6,8 @@ const Leaderboard = () => {
     return (
         <LeaderboardLayout>
             <h3>Leaderboard</h3>
-            <UserList playId={344}/>
+            <SearchBar/>
+            <UserList playId={345}/>
         </LeaderboardLayout>)
 }
 

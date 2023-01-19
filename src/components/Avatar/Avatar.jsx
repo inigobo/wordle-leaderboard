@@ -1,7 +1,7 @@
 import { styled } from "@stitches/react";
 import { Image } from "react-bootstrap";
 import { AvatarStyles } from './Avatar.styles';
-import { getSGV } from "../../services/apiAvatars";
+import { getSGV } from "../../services/apiCalls";
 import { useState, useEffect } from "react";
 
 const Avatar = (props) => {
