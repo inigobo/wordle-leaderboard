@@ -1,9 +1,9 @@
+require('dotenv').config();
 import axios from "axios";
-
 const AVATAR_ROOT = 'https://avatars.dicebear.com/api/pixel-art';
 const SERVER_ROOT = 'http://localhost:8000';
 const GIPHY_ROOT = 'https://api.giphy.com/v1/gifs';
-const GIPHY_API_KEY = 'iY6FTwlDTH72GjaGgXtdTxndZBZWB4lW';
+const GIPHY_API_KEY = process.env.GIPHY_API_KEY;
 
 export const getUsers = async () => {
     try {
