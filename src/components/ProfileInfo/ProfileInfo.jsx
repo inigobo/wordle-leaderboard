@@ -67,14 +67,19 @@ const ProfileInfo = ({ currentPlayId, selectedUser, loggedUser }) => {
                         <UsernameContainer>
                             {currentUser?.username}
                         </UsernameContainer>
-                        <InfoContainer type='attempts' score={currentPlay?.attempts} />
+                        <InfoContainer type='attempts' score={currentPlay ? currentPlay.attempts : 'X'} />
                         <InfoContainer type='streak' score={34} />
                         {isSelf ? <ModifyProfileModal currentUser={currentUser} /> : <></>}
                     </InfoGrid>
-                    <BoardContainer>
-                        <h4>Game #{currentPlay.playId}</h4>
-                        <Board board={currentPlay?.board} />
-                    </BoardContainer>
+                    {
+                        currentPlay ?
+                            <BoardContainer>
+                                <h4>Game #{currentPlay.playId}</h4>
+                                <Board board={currentPlay?.board} />
+                            </BoardContainer>
+                            :
+                            <h4>Pending play...</h4>
+                    }
                 </ProfileInfoLayout>
             }
         </>

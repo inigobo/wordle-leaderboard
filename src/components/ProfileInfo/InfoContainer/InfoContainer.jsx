@@ -1,14 +1,14 @@
 import { styled } from "@stitches/react";
 import { NumberStyle, TitleStyle, ContainerStyle } from "./InfoContainer.styles";
 
-const InfoContainer = (props) => {
+const InfoContainer = ({type, score}) => {
     return (
         <ContainerLayout>
             <TitleContainer>
-                {props.type}
+                {type}
             </TitleContainer>
             <NumberContainer>
-                {props.score}
+                {score}
             </NumberContainer>
         </ContainerLayout>
     );

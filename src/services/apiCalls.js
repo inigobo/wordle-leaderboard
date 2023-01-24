@@ -1,9 +1,8 @@
-require('dotenv').config();
 import axios from "axios";
 const AVATAR_ROOT = 'https://avatars.dicebear.com/api/pixel-art';
 const SERVER_ROOT = 'http://localhost:8000';
 const GIPHY_ROOT = 'https://api.giphy.com/v1/gifs';
-const GIPHY_API_KEY = process.env.GIPHY_API_KEY;
+const GIPHY_API_KEY = 'iY6FTwlDTH72GjaGgXtdTxndZBZWB4lW';
 
 export const getUsers = async () => {
     try {
@@ -87,11 +86,11 @@ export const getGifsByWord = async (wordleWord) => {
     return response.data.data;
 }
 
-export const updateProfile = (profile) => {
+export const updateProfile = async (profile, userId) => {
     let config = {
         method: 'patch',
-        url: `${SERVER_ROOT}/users`,
+        url: `${SERVER_ROOT}/users/${userId}`,
         data: profile
     }
-    return axios(config);
+    return await axios(config);
 };

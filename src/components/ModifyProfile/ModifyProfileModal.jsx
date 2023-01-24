@@ -1,25 +1,37 @@
 import React, { useState } from 'react';
-import { Modal, Form, Button, Row, Col, Image } from 'react-bootstrap';
-import { getSGV, updateProfile } from '../../services/apiCalls';
+import { Modal, Form, Button, Row, Col, Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { getSGV, getUser, updateProfile } from '../../services/apiCalls';
 import * as yup from 'yup';
-import { Formik, useFormikContext } from 'formik';
+import { Formik } from 'formik';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import { AvatarOptionStyles, AvatarSelectorStyles, AvatarTitleLayoutStyles } from '../RegisterForm/RegisterForm.styles';
 import { styled } from '@stitches/react';
 import { BsArrowRepeat } from 'react-icons/bs';
-
-
+import { useNavigate } from 'react-router-dom';
+import { AvatarOptionStyles, AvatarSelectorStyles, AvatarTitleLayoutStyles, ModifyProfileModalLayoutStyles } from './ModifyProfileModal.styles';
 
 const schema = yup.object().shape({
-    firstName: yup.string().min(2, 'Too short!').max(14, 'Too long!'),
+    firstName: yup.string().min(2, 'Too short!').max(14, 'Too long!').required('Required'),
     surname: yup.string().min(2, 'Too short!').max(14, 'Too long!').required('Required'),
-    username: yup.string().min(4, 'Too short!').max(12, 'Too long!').required('Required'),
+    username: yup.string().min(4, 'Too short!').max(12, 'Too long!'),
     email: yup.string().email('Invalid email').required('Required'),
-    password: yup.string().min(6, 'Too short!').max(50, 'Too long!').required('Required'),
-    confirmPassword: yup.string().when("password", {
+    oldPassword: yup.string().when('username', (username, schema) => {
+        if (username) {
+            return schema.test('password-correct', 'Current password needed to modify profile', async value => {
+                const user = await getUser(username);
+                if (user && user.password === value) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        }
+        return schema;
+    }),
+    newPassword: yup.string().min(6, 'Too short!').max(50, 'Too long!'),
+    confirmPassword: yup.string().when("newPassword", {
         is: val => (val && val.length > 0 ? true : false),
         then: yup.string().oneOf(
-            [yup.ref("password")],
+            [yup.ref("newPassword")],
             "Both password need to be the same"
         )
     })
@@ -30,33 +42,42 @@ const ModifyProfileModal = ({ currentUser }) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const { resetForm } = useFormikContext();
 
-    const [avatarSeeds, setAvatarSeeds] = useState(Array.from({ length: 4 }, () => (Math.random() + 1).toString(36).substring(7)));
+    let navigate = useNavigate();
+
+    const [avatarSeeds, setAvatarSeeds] = useState([currentUser.avatarSeed, ...Array.from({ length: 3 }, () => (Math.random() + 1).toString(36).substring(7))]);
 
     const handleRegenerateAvatar = () => {
-        setAvatarSeeds(Array.from({ length: 4 }, () => (Math.random() + 1).toString(36).substring(7)));
+        setAvatarSeeds([currentUser.avatarSeed, ...Array.from({ length: 3 }, () => (Math.random() + 1).toString(36).substring(7))]);
     };
 
     const submitHandler = async (event) => {
-        event.preventDefault();
+        const newPassword = event.newPassword.length === 0 ? event.oldPassword : event.newPassword;
         try {
             const updatedUser = await updateProfile({
                 username: event.username,
                 fullName: `${event.firstName} ${event.surname}`,
                 email: event.email,
                 avatarSeed: event.avatarSeed,
-                newPassword: event.newPassword
-            });
+                password: newPassword,
+            }, currentUser.id);
+            setShow(false);
+            navigate(0);
+            console.log(updatedUser);
         } catch (error) {
             console.error(error);
         }
     };
 
+    const renderTooltip = (props) => (
+        <Tooltip id="button-tooltip" {...props}>
+            Regenerate
+        </Tooltip>
+    );
 
     return (
-        <>
-            <Button variant="secondary" onClick={handleShow}>
+        <ModifyProfileModalLayout>
+            <Button variant="outline-secondary" onClick={handleShow}>
                 Edit profile
             </Button>
 
@@ -76,10 +97,11 @@ const ModifyProfileModal = ({ currentUser }) => {
                         validationSchema={schema}
                         onSubmit={submitHandler}
                         onChange={console.log}
+                        validateOnChange={false}
                         initialValues={{
                             username: currentUser.username,
                             email: currentUser.email,
-                            oldPassword: currentUser.password,
+                            oldPassword: '',
                             firstName: currentUser.fullName.split(' ')[0],
                             surname: currentUser.fullName.split(' ')[1],
                             newPassword: '',
@@ -158,7 +180,7 @@ const ModifyProfileModal = ({ currentUser }) => {
                                                 onChange={handleChange('username')}
                                                 onBlur={handleBlur('username')}
                                                 isInvalid={touched.username && errors.username}
-                                                required
+                                                disabled
                                             />
                                             <Form.Control.Feedback></Form.Control.Feedback>
                                             <Form.Control.Feedback type="invalid">
@@ -196,38 +218,38 @@ const ModifyProfileModal = ({ currentUser }) => {
                                         className="mb-3">
                                         <Form.Control
                                             type="password"
-                                            name='password'
+                                            name='oldPassword'
                                             autoComplete='new-password'
                                             placeholder='Password'
-                                            value={values.password}
-                                            onChange={handleChange('password')}
-                                            onBlur={handleBlur('password')}
-                                            isInvalid={touched.password && errors.password}
+                                            value={values.oldPassword}
+                                            onChange={handleChange('oldPassword')}
+                                            onBlur={handleBlur('oldPassword')}
+                                            isInvalid={touched.oldPassword && errors.oldPassword}
                                             required />
                                         <Form.Control.Feedback></Form.Control.Feedback>
                                         <Form.Control.Feedback type="invalid">
-                                            {errors.password}
+                                            {errors.oldPassword}
                                         </Form.Control.Feedback>
                                     </FloatingLabel>
                                 </Form.Group>
-                                <Form.Group controlId='validationPassword'>
+                                <Form.Group controlId='validationNewPassword'>
                                     <FloatingLabel
-                                        controlId="floatingInput5"
+                                        controlId="floatingInput88"
                                         label="New password"
                                         className="mb-3">
                                         <Form.Control
                                             type="password"
-                                            name='password'
+                                            name='newPassword'
                                             autoComplete='new-password'
                                             placeholder='Password'
-                                            value={values.password}
-                                            onChange={handleChange('password')}
-                                            onBlur={handleBlur('password')}
-                                            isInvalid={touched.password && errors.password}
-                                            required />
+                                            value={values.newPassword}
+                                            onChange={handleChange('newPassword')}
+                                            onBlur={handleBlur('newPassword')}
+                                            isInvalid={touched.newPassword && errors.newPassword}
+                                        />
                                         <Form.Control.Feedback></Form.Control.Feedback>
                                         <Form.Control.Feedback type="invalid">
-                                            {errors.password}
+                                            {errors.newPassword}
                                         </Form.Control.Feedback>
                                     </FloatingLabel>
                                 </Form.Group>
@@ -245,7 +267,7 @@ const ModifyProfileModal = ({ currentUser }) => {
                                             onChange={handleChange('confirmPassword')}
                                             onBlur={handleBlur('confirmPassword')}
                                             isInvalid={touched.confirmPassword && errors.confirmPassword}
-                                            required />
+                                        />
                                         <Form.Control.Feedback></Form.Control.Feedback>
                                         <Form.Control.Feedback type="invalid">
                                             {errors.confirmPassword}
@@ -254,36 +276,46 @@ const ModifyProfileModal = ({ currentUser }) => {
                                 </Form.Group>
                                 <AvatarTitleLayout>
                                     <h3>Avatar</h3>
-                                    <Button variant="outline-dark" onClick={handleRegenerateAvatar} className='rounded-circle' style={{ margin: '1em 1em 1em 1em', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                        <BsArrowRepeat />
-                                    </Button>
+                                    <OverlayTrigger
+                                        placement="right"
+                                        delay={{ show: 150, hide: 100 }}
+                                        overlay={renderTooltip}
+                                    >
+                                        <Button variant="outline-dark" onClick={handleRegenerateAvatar} className='rounded-circle' alt={"Regenerate"} style={{ margin: '1em 1em 1em 1em', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                            <BsArrowRepeat />
+                                        </Button>
+                                    </OverlayTrigger>
                                 </AvatarTitleLayout>
-                                <Form.Group controlId='validationAvatar'>
+                                <Form.Group controlId='validationNewAvatar'>
                                     <AvatarRadioContainer>
                                         {
                                             avatarSeeds.map((seed, index) => {
                                                 return (
-                                                    <AvatarOptionContainer key={index.toString()} className={seed.toString() === values.avatarSeed ? 'selected' : ''} style={{ borderRadius: '0.5em' }}>
-                                                        <Form.Check
-                                                            id={index.toString()}
-                                                            defaultChecked={index === 0}
-                                                            css={{
-                                                                '&.form-check': {
-                                                                    height: '0',
-                                                                    width: '0',
-                                                                }
-                                                            }}
-                                                        >
-                                                            <Form.Check.Input name="group1"
-                                                                type="radio"
-                                                                value={seed.toString()}
-                                                                onChange={handleChange('avatarSeed')}
-                                                                onBlur={handleBlur('avatarSeed')} />
-                                                            <Form.Check.Label>
-                                                                <Image src={getSGV(seed)} alt={`Option ${index}`} height={80} width={80} />
-                                                            </Form.Check.Label>
-                                                        </Form.Check>
-                                                    </AvatarOptionContainer>
+                                                    <div key={'rad' + index}>
+                                                        {index === 0 ? <div style={{ display: 'flex', flexDirection: 'column', alignContent: 'center', flexWrap: 'wrap', fontWeight: 500 }}>Current</div> : <div style={{ display: 'flex', flexDirection: 'column', alignContent: 'center', flexWrap: 'wrap', fontWeight: 500 }}> Option {index}</div>}
+                                                        <AvatarOptionContainer key={'av' + index.toString()} className={seed.toString() === values.avatarSeed ? 'selected' : ''} style={{ borderRadius: '0.5em' }}>
+                                                            <Form.Check
+                                                                id={'avc' + index.toString()}
+                                                                defaultChecked={index === 0}
+                                                                css={{
+                                                                    '&.form-check': {
+                                                                        height: '0',
+                                                                        width: '0',
+                                                                    }
+                                                                }}
+                                                            >
+                                                                <Form.Check.Input name="group1"
+                                                                    id={'avi' + index.toString()}
+                                                                    type="radio"
+                                                                    value={seed.toString()}
+                                                                    onChange={handleChange('avatarSeed')}
+                                                                    onBlur={handleBlur('avatarSeed')} />
+                                                                <Form.Check.Label id={'lbl' + index.toString()}>
+                                                                    <Image src={getSGV(seed)} alt={`Option ${index}`} height={80} width={80} />
+                                                                </Form.Check.Label>
+                                                            </Form.Check>
+                                                        </AvatarOptionContainer>
+                                                    </div>
                                                 );
                                             })
                                         }
@@ -294,22 +326,18 @@ const ModifyProfileModal = ({ currentUser }) => {
                                 <Button variant="primary" type="submit">
                                     Save changes
                                 </Button>
-
-                                <Button variant="secondary" onClick={resetForm}>
-                                    Reset values
-                                </Button>
                             </Form>
                         )}
                     </Formik>
                 </Modal.Body>
             </Modal>
-        </>
+        </ModifyProfileModalLayout>
     );
 }
 
 export default ModifyProfileModal;
 
-
+const ModifyProfileModalLayout = styled('div', ModifyProfileModalLayoutStyles)
 const AvatarRadioContainer = styled('div', AvatarSelectorStyles);
 const AvatarOptionContainer = styled('div', AvatarOptionStyles);
 const AvatarTitleLayout = styled('div', AvatarTitleLayoutStyles);

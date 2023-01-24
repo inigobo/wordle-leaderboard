@@ -62,6 +62,7 @@ const RegisterForm = () => {
                 validationSchema={schema}
                 onSubmit={submitHandler}
                 onChange={console.log}
+                validateOnChange={false}
                 initialValues={{
                     username: '',
                     email: '',
@@ -266,7 +267,7 @@ const RegisterForm = () => {
 }
 
 export default RegisterForm;
-const RegisterFormLayout = styled(Card, RegisterFormStyles);
+const RegisterFormLayout = styled('div', RegisterFormStyles);
 const AvatarRadioContainer = styled('div', AvatarSelectorStyles);
 const AvatarOptionContainer = styled('div', AvatarOptionStyles);
 const AvatarTitleLayout = styled('div', AvatarTitleLayoutStyles);

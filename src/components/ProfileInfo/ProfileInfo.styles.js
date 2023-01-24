@@ -30,14 +30,17 @@ export const UsernameStyle = {
 export const NameStyle = {
     fontSize: '1em',
     fontWeight: 'bold',
-    gridArea:'name'
+    gridArea:'name',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
 }
 
 export const InfoGridStyle = {
     maxWidth: '700px',
     alignSelf: 'center',
     display: 'grid',
-    padding: '5em 2em 0 2em',
+    padding: '2em 2em 0 2em',
     gridGap: '0.5em',
     gridTemplateColumns: '1fr 1fr 1fr',
     gridTemplateAreas: `
@@ -54,6 +57,6 @@ export const BoardContainerStyle = {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    padding: '5em 2em 5em 2em'
+    padding: '1em 2em 1em 2em'
 
 }

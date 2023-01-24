@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import { ButtonStyles } from "./Button.styles";
 
-const HeaderButton = (props) => {
+const HeaderButton = ({redirect, text}) => {
     let navigate = useNavigate();
     return (
-        <ButtonLayout variant='warning' onClick={()=>navigate(props.redirect)} >
-            {props.text}
+        <ButtonLayout variant='warning' onClick={()=>navigate(redirect)} >
+            {text}
         </ButtonLayout>
     )
 }

@@ -1,5 +1,4 @@
 import { styled } from "@stitches/react";
-import LetterCard from "../LetterCard/LetterCard";
 import { RowGridStyles } from "./RowGrid.styles";
 
 const RowGrid = ({children}) => {

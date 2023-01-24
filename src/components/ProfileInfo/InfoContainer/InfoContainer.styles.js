@@ -7,7 +7,6 @@ export const ContainerStyle = {
     width: 'auto',
     height: '100%',
     maxHeight: 'auto',
-    border: '2px solid lightgrey',
     textTransform: 'uppercase',
     borderRadius: '1em',
     userSelect: 'none',

@@ -33,6 +33,7 @@ const LoginCard = () => {
         event.stopPropagation();
         setGlobalContext({ ...globalContext, selectedUser: user.username });
         navigate('/profile');
+        navigate(0);
     }
 
     return (
