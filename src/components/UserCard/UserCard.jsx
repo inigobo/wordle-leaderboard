@@ -3,23 +3,25 @@ import { UserCardStyle, TitleContainerStyle, StatsContainerStyle } from "./UserC
 import { styled } from '@stitches/react';
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from '../../contexts/GlobalContext';
+import { useEffect } from 'react';
 
-const UserCard = ({avatarSeed,status,username,score}) => {
+const UserCard = ({ avatarSeed, status, username, score, position }) => {
     let navigate = useNavigate();
     const { globalContext, setGlobalContext } = useGlobalContext();
 
     const handleSelectCard = (event) => {
         event.preventDefault();
         event.stopPropagation();
-        console.log(event.target.value);
         setGlobalContext({ ...globalContext, selectedUser: username });
-        console.log(globalContext, "card");
-        navigate('/profile');
+        setTimeout(() => {
+            navigate('/profile');
+        }, 200);
     };
+
 
     return (
         <CardLayout onClick={handleSelectCard}>
-            <Avatar seed={avatarSeed} variant='medium'  />
+            <Avatar seed={avatarSeed} variant='medium' />
             <TitleContainer>{username}</TitleContainer>
             {
                 status === 'pending' && <StatsContainer>PENDING</StatsContainer>
@@ -27,7 +29,7 @@ const UserCard = ({avatarSeed,status,username,score}) => {
             {
                 !(status === 'pending') && <StatsContainer>{score}</StatsContainer>
             }
-            
+
         </CardLayout>
     )
 }

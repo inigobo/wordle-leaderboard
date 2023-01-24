@@ -1,12 +1,15 @@
 import { styled } from "@stitches/react";
 import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
+import { useGlobalContext } from "../../contexts/GlobalContext";
 import { SearchBarLayoutStyles } from "./SearchBar.styles";
 
 const SearchBar = ({ onSearch, onFilterPlayId }) => {
     const [playId, setPlayId] = useState(344)
     const [searchTerm, setSearchTerm] = useState('');
     const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+
+    const {globalContext, setGlobalContext} = useGlobalContext();
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -19,6 +22,7 @@ const SearchBar = ({ onSearch, onFilterPlayId }) => {
         setSearchTerm(event.target.value);
     }
     const handleFilterPlayId = (event) => {
+        setGlobalContext({...globalContext, currentPlayId: event.target.value});
         setPlayId(event.target.value);
     }
 
@@ -43,6 +47,7 @@ const SearchBar = ({ onSearch, onFilterPlayId }) => {
             >
                 <option value="344">344</option>
                 <option value="345">345</option>
+                <option value="346">346</option>
             </Form.Select>
         </SearchBarLayout>
     );

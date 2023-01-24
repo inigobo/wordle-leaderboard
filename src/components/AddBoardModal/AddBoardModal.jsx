@@ -15,19 +15,19 @@ const AddBoardModal = () => {
     const handleShow = () => setShow(true);
 
     const handleSubmit = (event) => {
-        console.log('add play');
-        console.log(event);
-        registerPlay({
-            username: event.username,
-            board: event.board,
-        })
-            .then(response => {
-                console.log(response);
-                navigate('/login');
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        navigate('/login');
+        // console.log(event);
+        // registerPlay({
+        //     username: event.username,
+        //     board: event.board,
+        // })
+        //     .then(response => {
+        //         console.log(response);
+        //         navigate('/login');
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //     });
     }
 
     const [currentPlayId, setCurrentPlayId] = useState(344);

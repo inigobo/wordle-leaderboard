@@ -11,9 +11,7 @@ import Register from './pages/Register/Register';
 
 function App() {
   const username = localStorage.getItem('username');
-  console.log('local usrn', username);
   const avatarSeed = localStorage.getItem('avatarSeed');
-  console.log('local avat', avatarSeed);
 
   return (
     <div className="App">
@@ -23,6 +21,7 @@ function App() {
           isLoggedIn: username !== null ? true : false,
           selectedUser: username,
           avatarSeed: avatarSeed,
+          currentPlayId: 344,
         }}>
           <HeaderNav />
           <Routes>

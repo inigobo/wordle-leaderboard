@@ -5,6 +5,7 @@ const initialGlobalContext = {
   isLoggedIn: false,
   selectedUser: null,
   avatarSeed: null,
+  currentPlayId: 344,
 }
 
 const GlobalContext = createContext({

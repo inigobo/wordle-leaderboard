@@ -1,67 +1,83 @@
 import Avatar from '../Avatar/Avatar';
-import { ProfileInfoStyle, NameStyle, UsernameStyle, StatsStyle, AvatarLayoutStyle, InfoGridStyle, BoardContainerStyle } from "./ProfileInfo.styles";
+import { ProfileInfoStyle, NameStyle, UsernameStyle, InfoGridStyle, BoardContainerStyle } from "./ProfileInfo.styles";
 import { styled } from '@stitches/react';
-import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from '../../contexts/GlobalContext';
 import InfoContainer from "./InfoContainer/InfoContainer";
-import MockUsers from '../../assets/data/mock-users.json'
-import MockPlays from '../../assets/data/mock-plays.json'
-import { useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import Board from '../Board/Board';
+import { getPlays, getPlaysById, getUser, getUsers } from '../../services/apiCalls';
+import ModifyProfileModal from '../ModifyProfile/ModifyProfileModal';
 
-const ProfileInfo = () => {
+const ProfileInfo = ({ currentPlayId, selectedUser, loggedUser }) => {
 
-    const { globalContext, setGlobalContext } = useGlobalContext();
+    const [currentUser, setCurrentUser] = useState(null);
+    const [currentPlay, setCurrentPlay] = useState(null);
+    const [isUserLoading, setIsUserLoading] = useState(true);
+    const [isPlayLoading, setIsPlayLoading] = useState(true);
+    const [isSelf, setIsSelf] = useState(false);
 
-    const [users, setUsers] = useState(MockUsers.users);
-    const [plays, setPlays] = useState(MockPlays.plays);
 
-    console.log(users);
+    //load user
+    useEffect(() => {
+        setIsUserLoading(true);
+        setIsSelf(false);
+        getUser(selectedUser)
+            .then((response) => {
+                setCurrentUser(response)
+                setIsUserLoading(false);
+            })
+            .catch((error) => {
+                console.error(error);
+                setIsUserLoading(false);
+            });
+    }, [selectedUser]);
 
-    const currentGameId = 344;
+    //load play
+    useEffect(() => {
+        setIsPlayLoading(true);
+        setIsSelf(false);
+        if (!currentPlay) {
+            getPlaysById(currentPlayId)
+                .then((response) => {
+                    setCurrentPlay(response.data.find(play => play.username === selectedUser))
+                    setIsPlayLoading(false);
+                })
+                .catch((error) => {
+                    console.error(error);
+                    setIsPlayLoading(false);
+                });
+        };
+    }, [selectedUser, currentPlayId]);
 
-    const showUser = users.find((user) => {
-        return (
-            user.username === globalContext.selectedUser
-        );
-    });
-
-    const showPlay = plays.find((play) => {
-        return (
-            play.playId === currentGameId
-        );
-    }).entries.find((entry) => {
-        return (
-            entry.username === globalContext.selectedUser
-        );
-    });
-
+    useEffect(() => {
+        if (currentUser && currentUser.username === loggedUser) {
+            setIsSelf(true);
+        }
+    }, [currentUser]);
 
     return (
-
-        <ProfileInfoLayout>
-            <InfoGrid>
-                <AvatarLayout>
-                    <Avatar seed={showUser.avatarSeed} variant={'big'} />
-                    <NameContainer>
-                        {showUser.fullName}
-                    </NameContainer>
-                    <UsernameContainer>
-                        {globalContext.selectedUser}
-                    </UsernameContainer>
-                </AvatarLayout>
-                <StatsLayout>
-                    <InfoContainer type='today' score={showPlay.attempts} />
-                    <InfoContainer type='all-time' score={97} />
-                    {/* <InfoContainer type='position' score={`#${props.position}`} /> */}
-                    <InfoContainer type='position' score={`#1`} />
-                    <InfoContainer type='streak' score={34} />
-                </StatsLayout>
-            </InfoGrid>
-            <BoardContainer>
-                <Board board={showPlay.board} />
-            </BoardContainer>
-        </ProfileInfoLayout>
+        <>
+            {isUserLoading || isPlayLoading ? <div> Loading ... </div> :
+                <ProfileInfoLayout>
+                    <InfoGrid>
+                        <Avatar seed={currentUser?.avatarSeed} variant={'big'} />
+                        <NameContainer>
+                            {currentUser?.fullName}
+                        </NameContainer>
+                        <UsernameContainer>
+                            {currentUser?.username}
+                        </UsernameContainer>
+                        <InfoContainer type='attempts' score={currentPlay?.attempts} />
+                        <InfoContainer type='streak' score={34} />
+                        {isSelf ? <ModifyProfileModal currentUser={currentUser} /> : <></>}
+                    </InfoGrid>
+                    <BoardContainer>
+                        <h4>Game #{currentPlay.playId}</h4>
+                        <Board board={currentPlay?.board} />
+                    </BoardContainer>
+                </ProfileInfoLayout>
+            }
+        </>
     )
 }
 
@@ -70,7 +86,5 @@ export default ProfileInfo;
 const ProfileInfoLayout = styled('div', ProfileInfoStyle);
 const UsernameContainer = styled('div', UsernameStyle);
 const NameContainer = styled('div', NameStyle);
-const StatsLayout = styled('div', StatsStyle);
-const AvatarLayout = styled('div', AvatarLayoutStyle);
 const InfoGrid = styled('div', InfoGridStyle);
 const BoardContainer = styled('div', BoardContainerStyle)
