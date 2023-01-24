@@ -38,11 +38,11 @@ const HeaderNav = () => {
                     {globalContext.isLoggedIn &&
                         <>
                             <LoginCard />
-                            <LinkContainer to="/" onClick={handleLogout}>
+                            <LinkContainer to="/" onClick={handleLogout} style={{margin: '1em'}}>
                                 <Nav.Link >Logout</Nav.Link>
                             </LinkContainer>
                         </>}
-                    {!globalContext.isLoggedIn && <LinkContainer to="/login"><Nav.Link >Login</Nav.Link></LinkContainer>}
+                    {!globalContext.isLoggedIn && <LinkContainer to="/login" ><Nav.Link >Login</Nav.Link></LinkContainer>}
                 </Navbar.Collapse>
             </Container>
         </Navbar>

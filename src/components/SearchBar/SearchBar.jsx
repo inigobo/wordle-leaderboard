@@ -9,7 +9,7 @@ const SearchBar = ({ onSearch, onFilterPlayId }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
 
-    const {globalContext, setGlobalContext} = useGlobalContext();
+    const { globalContext, setGlobalContext } = useGlobalContext();
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -22,7 +22,7 @@ const SearchBar = ({ onSearch, onFilterPlayId }) => {
         setSearchTerm(event.target.value);
     }
     const handleFilterPlayId = (event) => {
-        setGlobalContext({...globalContext, currentPlayId: event.target.value});
+        setGlobalContext({ ...globalContext, currentPlayId: event.target.value });
         setPlayId(event.target.value);
     }
 
@@ -40,10 +40,13 @@ const SearchBar = ({ onSearch, onFilterPlayId }) => {
                 type="text"
                 placeholder="Search..."
                 value={searchTerm}
-                onChange={handleSearch} />
+                onChange={handleSearch}
+                style={{ flexGrow: 3, width: 0 }}
+            />
             <Form.Select
                 aria-label="Play ID"
                 onChange={handleFilterPlayId}
+                style={{ flexGrow: 1, width: 0 }}
             >
                 <option value="344">344</option>
                 <option value="345">345</option>

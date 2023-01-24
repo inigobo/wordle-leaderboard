@@ -1,6 +1,10 @@
 export const RegisterFormStyles = {
-    width: '44rem',
-    padding: '1em',
+    width: '100%',
+    maxWidth: '44em',
+    border: '1px solid #ced4da',
+    borderRadius: '0.375rem',
+    padding: '0.5em 0.75em',
+    margin: '1em'
 }
 
 export const AvatarRadioStyles = {
@@ -21,10 +25,11 @@ export const AvatarRadioStyles = {
 
 export const AvatarSelectorStyles = {
     display: 'flex',
-    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
     border: '1px solid #ced4da',
     borderRadius: '0.375rem',
-    padding: '1rem 0.75rem',
+    padding: '1em 1em',
     margin: '1em 0 1em'
 
 }
@@ -34,6 +39,7 @@ export const AvatarOptionStyles = {
     justifyContent: 'center',
     border: '1px solid lightgrey',
     padding: '0 1.44em 0 0',
+    margin: '0.4em',
     /* HIDE RADIO */
     '[type = radio]': {
         display: 'none',
@@ -57,7 +63,7 @@ export const AvatarOptionStyles = {
 export const AvatarTitleLayoutStyles = {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center'
 
 }

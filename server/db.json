@@ -5,15 +5,15 @@
       "username": "inigob",
       "fullName": "Iñigo Berganza",
       "email": "inigob@email.com",
-      "avatarSeed": "asdf",
-      "password": "password"
+      "avatarSeed": "f5710g",
+      "password": "qwertyuiop"
     },
     {
       "id": 2,
       "username": "javib",
       "fullName": "Javi Berganza",
-      "avatarSeed": "qwer",
-      "email": "javib@email.com",
+      "avatarSeed": "bo87bl",
+      "email": "javib@email.es",
       "password": "password"
     },
     {
@@ -109,7 +109,7 @@
           "paint": "wwwww"
         },
         {
-          "word": "     ",
+          "word": "-----",
           "paint": "wwwww"
         }
       ]
@@ -175,6 +175,38 @@
         {
           "word": "polvo",
           "paint": "ccccc"
+        }
+      ]
+    },
+    {
+      "playId": 344,
+      "username": "yvonnecor",
+      "attempts": "3",
+      "status": "won",
+      "board": [
+        {
+          "word": "aireo",
+          "paint": "mmmmc"
+        },
+        {
+          "word": "culto",
+          "paint": "mmcmc"
+        },
+        {
+          "word": "polvo",
+          "paint": "ccccc"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
         }
       ]
     },

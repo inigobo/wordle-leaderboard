@@ -1,10 +1,10 @@
 import { CardLayoutStyles } from "./LetterCard.styles";
 import { styled } from "@stitches/react";
 
-const LetterCard = (props) => {
+const LetterCard = ({paint, letter}) => {
     return (
-        <LetterCardLayout paint={props.paint}>
-            {props.letter}
+        <LetterCardLayout paint={paint}>
+            {letter}
         </LetterCardLayout>
 
     );
