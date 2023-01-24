@@ -2,6 +2,8 @@ import axios from "axios";
 
 const AVATAR_ROOT = 'https://avatars.dicebear.com/api/pixel-art';
 const SERVER_ROOT = 'http://localhost:8000';
+const GIPHY_ROOT = 'https://api.giphy.com/v1/gifs';
+const GIPHY_API_KEY = 'iY6FTwlDTH72GjaGgXtdTxndZBZWB4lW';
 
 export const getUsers = async () => {
     try {
@@ -16,11 +18,15 @@ export const getUsers = async () => {
 };
 
 export const getPlays = async () => {
-    let config = {
-        method: 'get',
-        url: `${SERVER_ROOT}/plays`
+    try {
+        let config = {
+            method: 'get',
+            url: `${SERVER_ROOT}/plays`
+        }
+        return await axios(config);
+    } catch (error) {
+        console.log(error);
     }
-    return await axios(config);
 };
 
 export const getPlaysById = async (playId) => {
@@ -28,7 +34,8 @@ export const getPlaysById = async (playId) => {
         method: 'get',
         url: `${SERVER_ROOT}/plays?playId=${playId}`
     }
-    return await axios(config);
+    const response = await axios(config);
+    return response;
 };
 
 export const getSGV = (seed) => {
@@ -71,3 +78,20 @@ export const getUser = async (username) => {
     return response.data[0];
 }
 
+export const getGifsByWord = async (wordleWord) => {
+    let config = {
+        method: 'get',
+        url: `${GIPHY_ROOT}/search?q=${wordleWord}&limit=4&api_key=${GIPHY_API_KEY}`,
+    }
+    const response = await axios(config);
+    return response.data.data;
+}
+
+export const updateProfile = (profile) => {
+    let config = {
+        method: 'patch',
+        url: `${SERVER_ROOT}/users`,
+        data: profile
+    }
+    return axios(config);
+};

@@ -1,13 +1,11 @@
 export const ProfileInfoStyle = {
     width: '100%',
     display: 'flex',
+    flexWrap: 'wrap',
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignContent: 'center'
 
-}
-
-export const AvatarLayoutStyle = {
-    padding: '1em 0'
 }
 
 export const AvatarStyle = {
@@ -19,51 +17,43 @@ export const AvatarStyle = {
         width: '40px',
         height: '40px',
     },
+    gridArea:'avatar'
 }
 
 export const UsernameStyle = {
     fontSize: '1em',
     fontFamily: 'Courier',
-    '@media (max-width: 820px)': {
-        fontSize: '0.9em',
+    gridArea:'username'
 
-    },
 }
 
 export const NameStyle = {
     fontSize: '1em',
     fontWeight: 'bold',
-    '@media (max-width: 820px)': {
-        fontSize: '0.75em',
-
-    },
+    gridArea:'name'
 }
-export const StatsStyle = {
-    display: 'grid',
-    gridGap: '0.5em',
-    width: '352.5px',
-    padding: '0.5em',
-    gridTemplateColumns: 'auto auto',
-    gridTemplateRows: 'auto',
-    '@media (max-width: 820px)': {
-        fontSize: '0.75em',
 
-    },
-
-}
 export const InfoGridStyle = {
-    width: '100%',
-    display: 'flex',
-    justifyContent:'center',
-    flexDirection: 'row',
-    
-
+    maxWidth: '700px',
+    alignSelf: 'center',
+    display: 'grid',
+    padding: '5em 2em 0 2em',
+    gridGap: '0.5em',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gridTemplateAreas: `
+    'avatar stat stat'
+    'name stat stat'
+    'username empty empty'
+    `,
+    gridTemplateRows: 'auto',
+    gridAutoFlow: 'dense'
 }
 export const BoardContainerStyle = {
     width: '100%',
     display: 'flex',
-    justifyContent:'center',
-    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
     padding: '5em 2em 5em 2em'
 
 }

@@ -16,12 +16,9 @@ import { getUser } from '../../services/apiCalls';
 const schema = yup.object().shape({
     username: yup.string().required().test('username-exists', 'Incorrect username', async (value) => {
         const user = await getUser(value);
-        console.log('val', user);
         if (user) {
-            console.log('true', user);
             return true;
         } else {
-            console.log('false', user);
             return false;
         }
     }),
@@ -45,7 +42,6 @@ const LoginForm = () => {
     const { globalContext, setGlobalContext } = useGlobalContext();
 
     const submitHandler = (event) => {
-        console.log('login');
         localStorage.setItem('username', event.username);
         setGlobalContext({ ...globalContext, currentUser: event.username, isLoggedIn: true, avatarSeed: event.avatarSeed })
         navigate('/');

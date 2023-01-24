@@ -4,14 +4,10 @@ import { styled } from "@stitches/react";
 import LetterCard from "./LetterCard/LetterCard";
 
 const Board = ({board}) => {
-
-    console.log('board', board);
     return (
         <BoardLayout>
             {
                 board.map((row) => {
-                    console.log(row.word);
-                    console.log(row.paint);
                     const slicedWord = row.word.split('');
                     const slicedPaint = row.paint.split('');
                     return (

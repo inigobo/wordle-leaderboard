@@ -17,7 +17,6 @@ const LoginCard = () => {
         if (!user) {
             getUsers().then(
                 (response) => {
-                    console.log(response);
                     const user = response.data.find((user) => {
                         return (
                             user.username === globalContext.currentUser

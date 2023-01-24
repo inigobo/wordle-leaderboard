@@ -4,6 +4,7 @@
       "id": 1,
       "username": "inigob",
       "fullName": "Iñigo Berganza",
+      "email": "inigob@email.com",
       "avatarSeed": "asdf",
       "password": "password"
     },
@@ -12,6 +13,7 @@
       "username": "javib",
       "fullName": "Javi Berganza",
       "avatarSeed": "qwer",
+      "email": "javib@email.com",
       "password": "password"
     },
     {
@@ -19,6 +21,7 @@
       "username": "elenal",
       "fullName": "Elena Lazaro",
       "avatarSeed": "jklñ",
+      "email": "elenal@email.com",
       "password": "password"
     },
     {
@@ -26,6 +29,7 @@
       "username": "vicenteb",
       "fullName": "Vicente Berganza",
       "avatarSeed": "uiop",
+      "email": "vicenteb@email.com",
       "password": "password"
     },
     {
@@ -33,34 +37,23 @@
       "username": "bertal",
       "fullName": "Berta Lazaro",
       "avatarSeed": "vbnm",
+      "email": "bertab@email.com",
       "password": "password"
-    },
-    {
-      "username": "teresi",
-      "email": "tere@igi.com",
-      "password": "asdfasdf",
-      "firstName": "Teresa",
-      "surname": "Vadillo",
-      "confirmPassword": "asdfasdf",
-      "avatarSeed": "rn4",
-      "id": 6
     },
     {
       "username": "yvonnecor",
       "fullName": "Yvonne  Corcuera",
-      "avatarSeed": "rn2",
+      "avatarSeed": "fghj",
+      "email": "yvonnecor@email.com",
       "password": "qwertyuiop",
-      "id": 7
-    },
-    {
-      "id": 8
+      "id": 6
     }
   ],
   "plays": [
     {
       "playId": 344,
       "username": "inigob",
-      "attempts": "1",
+      "attempts": "3",
       "status": "won",
       "board": [
         {
@@ -188,7 +181,7 @@
     {
       "playId": 345,
       "username": "inigob",
-      "attempts": "3",
+      "attempts": "4",
       "status": "won",
       "board": [
         {
@@ -220,7 +213,7 @@
     {
       "playId": 345,
       "username": "bertal",
-      "attempts": "4",
+      "attempts": "3",
       "status": "won",
       "board": [
         {
@@ -284,7 +277,7 @@
     {
       "playId": 345,
       "username": "elenal",
-      "attempts": "2",
+      "attempts": "3",
       "status": "won",
       "board": [
         {
@@ -297,6 +290,70 @@
         },
         {
           "word": "acera",
+          "paint": "ccccc"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        }
+      ]
+    },
+    {
+      "playId": 346,
+      "username": "inigob",
+      "attempts": "3",
+      "status": "won",
+      "board": [
+        {
+          "word": "rueda",
+          "paint": "pmmmm"
+        },
+        {
+          "word": "primo",
+          "paint": "mpmmp"
+        },
+        {
+          "word": "color",
+          "paint": "ccccc"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        },
+        {
+          "word": "-----",
+          "paint": "wwwww"
+        }
+      ]
+    },
+    {
+      "playId": 346,
+      "username": "elenal",
+      "attempts": "3",
+      "status": "won",
+      "board": [
+        {
+          "word": "vital",
+          "paint": "mmmmp"
+        },
+        {
+          "word": "pulpo",
+          "paint": "mmcmp"
+        },
+        {
+          "word": "color",
           "paint": "ccccc"
         },
         {

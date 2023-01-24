@@ -2,14 +2,15 @@ import { Card, Row, Col, Image } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
-import { RegisterFormStyles } from './RegisterForm.styles';
+import { AvatarOptionStyles, AvatarSelectorStyles, AvatarTitleLayoutStyles, RegisterFormStyles } from './RegisterForm.styles';
 import { styled } from '@stitches/react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../../contexts/GlobalContext';
-import { AvatarOptionStyles, AvatarSelectorStyles } from '../AvatarSelector/AvatarSelector.styles';
 import { getSGV, registerUser } from '../../services/apiCalls';
+import { useState } from 'react';
+import { BsArrowRepeat } from 'react-icons/bs';
 
 
 const schema = yup.object().shape({
@@ -32,16 +33,13 @@ const RegisterForm = () => {
     const { globalContext, setGlobalContext } = useGlobalContext();
     let navigate = useNavigate();
 
-    // let rn1 = (Math.random() + 1).toString(36).substring(7);
-    // let rn2 = (Math.random() + 1).toString(36).substring(7);
-    // let rn3 = (Math.random() + 1).toString(36).substring(7);
-    // let rn4 = (Math.random() + 1).toString(36).substring(7);
+    const [avatarSeeds, setAvatarSeeds] = useState(Array.from({ length: 4 }, () => (Math.random() + 1).toString(36).substring(7)));
 
-    const seeds = ['rn1', 'rn2', 'rn3', 'rn4'];
+    const handleRegenerateAvatar = () => {
+        setAvatarSeeds(Array.from({ length: 4 }, () => (Math.random() + 1).toString(36).substring(7)));
+    };
 
     const submitHandler = (event) => {
-        console.log('register');
-        console.log(event);
         setGlobalContext({ ...globalContext, currentUser: event.username, avatarSeed: event.avatarSeed, isLoggedIn: false })
         registerUser({
             username: event.username,
@@ -50,13 +48,12 @@ const RegisterForm = () => {
             password: event.password
         })
             .then(response => {
-                console.log(response);
                 navigate('/login');
             })
             .catch(error => {
                 console.log(error);
             });
-        
+
     };
 
     return (
@@ -72,7 +69,7 @@ const RegisterForm = () => {
                     firstName: '',
                     surname: '',
                     confirmPassword: '',
-                    avatarSeed: 'random'
+                    avatarSeed: avatarSeeds[0]
                 }}
             >
                 {({
@@ -219,15 +216,21 @@ const RegisterForm = () => {
                                 </Form.Control.Feedback>
                             </FloatingLabel>
                         </Form.Group>
-                        <h3>Avatar</h3>
+                        <AvatarTitleLayout>
+                            <h3>Avatar</h3>
+                            <Button variant="outline-dark" onClick={handleRegenerateAvatar} className='rounded-circle' style={{ margin:'1em 1em 1em 1em', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                <BsArrowRepeat />
+                            </Button>
+                        </AvatarTitleLayout>
                         <Form.Group controlId='validationAvatar'>
                             <AvatarRadioContainer>
                                 {
-                                    seeds.map((seed, index) => {
+                                    avatarSeeds.map((seed, index) => {
                                         return (
-                                            <AvatarOptionContainer key={index.toString()} className={seed.toString() === values.avatarSeed ? 'selected' : ''}>
+                                            <AvatarOptionContainer key={index.toString()} className={seed.toString() === values.avatarSeed ? 'selected' : ''} style={{borderRadius: '0.5em'}}>
                                                 <Form.Check
                                                     id={index.toString()}
+                                                    defaultChecked={index === 0}
                                                     css={{
                                                         '&.form-check': {
                                                             height: '0',
@@ -248,6 +251,7 @@ const RegisterForm = () => {
                                         );
                                     })
                                 }
+
                             </AvatarRadioContainer>
                         </Form.Group>
 
@@ -265,3 +269,4 @@ export default RegisterForm;
 const RegisterFormLayout = styled(Card, RegisterFormStyles);
 const AvatarRadioContainer = styled('div', AvatarSelectorStyles);
 const AvatarOptionContainer = styled('div', AvatarOptionStyles);
+const AvatarTitleLayout = styled('div', AvatarTitleLayoutStyles);

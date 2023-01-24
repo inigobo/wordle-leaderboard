@@ -21,7 +21,6 @@ const UserList = ({ playId, searchTerm }) => {
         getPlaysById(playId)
             .then(
                 (response) => {
-                    console.log(response.data);
                     setEntries(response.data);
                 });
     }, [playId]);
@@ -35,29 +34,28 @@ const UserList = ({ playId, searchTerm }) => {
                     return (
                         entry.username.includes(searchTerm)
                     );
+                }).filter((entry) => {
+                    return (
+                        entry.status !== 'pending'
+                    );
+                }).sort((entry1, entry2) => {
+                    return (entry1.attempts - entry2.attempts)
+                }).map((entry) => {
+                    let user = users.find((user) => {
+                        return (
+                            user.username === entry.username
+                        );
+                    });
+                    return (
+                        <UserCard
+                            key={entry.username}
+                            username={entry.username}
+                            score={entry.attempts}
+                            avatarSeed={user.avatarSeed}
+                            status={entry.status}
+                        />
+                    );
                 })
-                    .filter((entry) => {
-                        return (
-                            entry.status !== 'pending'
-                        );
-                    }).sort((entry1, entry2) => {
-                        return (entry1.attempts - entry2.attempts)
-                    }).map((entry) => {
-                        let user = users.find((user) => {
-                            return (
-                                user.username === entry.username
-                            );
-                        });
-                        return (
-                            <UserCard
-                                key={entry.username}
-                                username={entry.username}
-                                score={entry.attempts}
-                                avatarSeed={user.avatarSeed}
-                                status={entry.status}
-                            />
-                        );
-                    })
             }
         </UserListLayout>
     )

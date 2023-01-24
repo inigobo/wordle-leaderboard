@@ -7,10 +7,9 @@ export const ContainerStyle = {
     width: 'auto',
     height: '100%',
     maxHeight: 'auto',
-    border: '2px solid rgb(224, 224, 224)',
-    borderColor: 'rgb(224, 224, 224)',
+    border: '2px solid lightgrey',
     textTransform: 'uppercase',
-    borderRadius: '5px',
+    borderRadius: '1em',
     userSelect: 'none',
     cursor: 'default',
 }

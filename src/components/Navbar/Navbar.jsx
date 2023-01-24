@@ -9,9 +9,6 @@ import AddBoardModal from '../AddBoardModal/AddBoardModal';
 
 const HeaderNav = () => {
     const { globalContext, setGlobalContext } = useGlobalContext();
-    // useEffect(() => {
-    //     console.log(globalContext, "nav");
-    // }, [globalContext])
 
     const handleLogout = () => {
         localStorage.removeItem('username');
